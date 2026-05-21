@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import SiteFooter from "../../components/SiteFooter";
 import { services } from "../../lib/services";
@@ -20,7 +21,17 @@ export default function WorkPage() {
         <Header />
 
         <section className="work-content work-services-content" aria-label="TBS services">
-          <h1>SERVICES</h1>
+          <h1 className="services-title-a11y">SERVICES</h1>
+          <figure className="services-title-art" aria-hidden="true">
+            <Image
+              src="/images/uploads/services-title-art.png"
+              alt=""
+              width={1536}
+              height={620}
+              priority
+              sizes="(max-width: 900px) 92vw, 760px"
+            />
+          </figure>
           <nav className="work-filters" aria-label="Service filters">
             <a className="active" href="#core-offers">CORE OFFERS</a>
             <a href="#visibility">VISIBILITY</a>
