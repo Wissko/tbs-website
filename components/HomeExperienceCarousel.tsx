@@ -131,7 +131,6 @@ export default function HomeExperienceCarousel() {
             key={slide.title}
           >
             <Image src={slide.image} alt={slide.alt} fill sizes="(max-width: 760px) 72vw, 360px" />
-            <span>{String(index + 1).padStart(2, "0")}</span>
           </article>
         ))}
       </div>
