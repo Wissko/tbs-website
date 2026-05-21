@@ -3463,3 +3463,67 @@ html, body { overflow-x: hidden; }
     order: -1;
   }
 }
+
+/* Results must behave as a full-screen page, not a boxed journal section. */
+.results-shell {
+  display: block !important;
+  min-height: 100svh !important;
+  padding: 0 !important;
+  background: #f3f3f1 !important;
+  color: #050505 !important;
+}
+.results-canvas {
+  width: 100% !important;
+  max-width: none !important;
+  min-height: 100svh !important;
+  background: #f3f3f1 !important;
+  padding: 126px clamp(28px, 4vw, 64px) 56px !important;
+  box-sizing: border-box !important;
+}
+.results-canvas .journal-header {
+  left: clamp(28px, 4vw, 64px) !important;
+  right: clamp(28px, 4vw, 64px) !important;
+}
+@media (min-width: 901px) {
+  .results-main {
+    align-self: start !important;
+  }
+  .results-list {
+    max-height: calc(100svh - 236px) !important;
+    overflow-y: auto !important;
+    padding-right: 14px !important;
+    scrollbar-width: thin !important;
+  }
+  .results-list::-webkit-scrollbar {
+    width: 6px;
+  }
+  .results-list::-webkit-scrollbar-thumb {
+    background: rgba(5,5,5,.28);
+    border-radius: 999px;
+  }
+  .results-row {
+    min-height: 154px !important;
+  }
+}
+@media (max-width: 900px) {
+  .results-canvas {
+    min-height: 100svh !important;
+    padding: 22px 20px 44px !important;
+  }
+}
+
+@media (min-width: 901px) {
+  .results-shell {
+    height: 100svh !important;
+    overflow: hidden !important;
+  }
+  .results-canvas {
+    height: 100svh !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+  }
+  .results-list {
+    max-height: calc(100svh - 258px) !important;
+    overflow-y: auto !important;
+  }
+}
