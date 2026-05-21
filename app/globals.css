@@ -4687,3 +4687,111 @@ html, body { overflow-x: hidden; }
     right: 0 !important;
   }
 }
+
+/* Animated brand mark: fixed center, rotating circular text ring. */
+.home-brand,
+.work-brand,
+.project-brand,
+.article-brand,
+.contact-brand,
+.simple-page-brand,
+.results-reference-brand,
+.menu-page-brand {
+  position: relative !important;
+  background-image: none !important;
+  overflow: visible !important;
+}
+.home-brand::before,
+.work-brand::before,
+.project-brand::before,
+.article-brand::before,
+.contact-brand::before,
+.simple-page-brand::before,
+.results-reference-brand::before,
+.menu-page-brand::before,
+.home-brand::after,
+.work-brand::after,
+.project-brand::after,
+.article-brand::after,
+.contact-brand::after,
+.simple-page-brand::after,
+.results-reference-brand::after,
+.menu-page-brand::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  display: block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  pointer-events: none;
+}
+.home-brand::before,
+.work-brand::before,
+.project-brand::before,
+.article-brand::before,
+.contact-brand::before,
+.results-reference-brand::before {
+  background-image: url('/images/uploads/to-be-seen-orb-logo-center.png');
+}
+.home-brand::after,
+.work-brand::after,
+.project-brand::after,
+.article-brand::after,
+.contact-brand::after,
+.results-reference-brand::after {
+  background-image: url('/images/uploads/to-be-seen-orb-logo-ring.png');
+}
+.simple-page-brand::before,
+.menu-page-brand::before {
+  background-image: url('/images/uploads/to-be-seen-orb-logo-center-dark.png');
+}
+.simple-page-brand::after,
+.menu-page-brand::after {
+  background-image: url('/images/uploads/to-be-seen-orb-logo-ring-dark.png');
+}
+.about-hero-header .simple-page-brand::before,
+.service-header .simple-page-brand::before {
+  background-image: url('/images/uploads/to-be-seen-orb-logo-center-dark.png') !important;
+}
+.about-hero-header .simple-page-brand::after,
+.service-header .simple-page-brand::after {
+  background-image: url('/images/uploads/to-be-seen-orb-logo-ring-dark.png') !important;
+}
+.home-brand::after,
+.work-brand::after,
+.project-brand::after,
+.article-brand::after,
+.contact-brand::after,
+.simple-page-brand::after,
+.results-reference-brand::after,
+.menu-page-brand::after {
+  animation: tbsOrbRingSpin 14s linear infinite;
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+.home-brand:hover::after,
+.work-brand:hover::after,
+.project-brand:hover::after,
+.article-brand:hover::after,
+.contact-brand:hover::after,
+.simple-page-brand:hover::after,
+.results-reference-brand:hover::after,
+.menu-page-brand:hover::after {
+  animation-duration: 7s;
+}
+@keyframes tbsOrbRingSpin {
+  to { transform: rotate(360deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-brand::after,
+  .work-brand::after,
+  .project-brand::after,
+  .article-brand::after,
+  .contact-brand::after,
+  .simple-page-brand::after,
+  .results-reference-brand::after,
+  .menu-page-brand::after {
+    animation: none !important;
+  }
+}
