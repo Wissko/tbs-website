@@ -275,19 +275,16 @@ a { color: inherit; text-decoration: none; }
   gap: clamp(18px, 3.1vw, 36px);
   overflow-x: auto;
   overscroll-behavior-x: contain;
-  scroll-snap-type: x mandatory;
+  scroll-snap-type: x proximity;
   scroll-padding-inline: clamp(36px, 12vw, 140px);
   padding: 88px clamp(36px, 12vw, 140px) 74px;
-  cursor: grab;
+  scroll-behavior: smooth;
+  cursor: default;
   user-select: none;
-  touch-action: pan-y;
+  touch-action: pan-x pan-y;
   scrollbar-width: none;
 }
 .home-carousel-track::-webkit-scrollbar { display: none; }
-.home-carousel-track.is-dragging {
-  cursor: grabbing;
-  scroll-snap-type: none;
-}
 .home-carousel-card {
   position: relative;
   flex: 0 0 clamp(245px, 34vw, 382px);

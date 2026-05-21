@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useMemo, useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 
 const slides = [
   {
@@ -36,7 +36,6 @@ const slides = [
 
 export default function HomeExperienceCarousel() {
   const trackRef = useRef<HTMLDivElement>(null);
-  const dragRef = useRef({ active: false, decided: false, startX: 0, startY: 0, scrollLeft: 0 });
   const [active, setActive] = useState(0);
 
   const activeSlide = slides[active];
@@ -63,65 +62,6 @@ export default function HomeExperienceCarousel() {
     setActive(nearestIndex);
   }, []);
 
-  const dragHandlers = useMemo(
-    () => ({
-      onPointerDown: (event: React.PointerEvent<HTMLDivElement>) => {
-        const track = trackRef.current;
-        if (!track) return;
-        dragRef.current = {
-          active: false,
-          decided: false,
-          startX: event.clientX,
-          startY: event.clientY,
-          scrollLeft: track.scrollLeft,
-        };
-      },
-      onPointerMove: (event: React.PointerEvent<HTMLDivElement>) => {
-        const track = trackRef.current;
-        if (!track) return;
-
-        const deltaX = event.clientX - dragRef.current.startX;
-        const deltaY = event.clientY - dragRef.current.startY;
-
-        if (!dragRef.current.decided) {
-          if (Math.abs(deltaX) < 8 && Math.abs(deltaY) < 8) return;
-          dragRef.current.decided = true;
-
-          if (Math.abs(deltaY) > Math.abs(deltaX)) {
-            dragRef.current.active = false;
-            return;
-          }
-
-          dragRef.current.active = true;
-          track.setPointerCapture(event.pointerId);
-          track.classList.add("is-dragging");
-        }
-
-        if (!dragRef.current.active) return;
-        event.preventDefault();
-        track.scrollLeft = dragRef.current.scrollLeft - deltaX;
-      },
-      onPointerUp: (event: React.PointerEvent<HTMLDivElement>) => {
-        const track = trackRef.current;
-        if (!track) return;
-        dragRef.current.active = false;
-        dragRef.current.decided = false;
-        if (track.hasPointerCapture(event.pointerId)) {
-          track.releasePointerCapture(event.pointerId);
-        }
-        track.classList.remove("is-dragging");
-        updateActiveSlide();
-      },
-      onPointerCancel: () => {
-        const track = trackRef.current;
-        dragRef.current.active = false;
-        dragRef.current.decided = false;
-        track?.classList.remove("is-dragging");
-      },
-    }),
-    [updateActiveSlide]
-  );
-
   return (
     <section className="home-carousel-section" aria-labelledby="home-carousel-title">
       <div className="home-carousel-meta">
@@ -145,7 +85,6 @@ export default function HomeExperienceCarousel() {
         ref={trackRef}
         className="home-carousel-track"
         onScroll={updateActiveSlide}
-        {...dragHandlers}
       >
         {slides.map((slide, index) => (
           <article
