@@ -2998,3 +2998,34 @@ html, body { overflow-x: hidden; }
     min-height: 72px;
   }
 }
+
+/* Results page replacing journal with business outcomes. */
+.results-canvas { background: #f3f3f1; }
+.results-side h1 { letter-spacing: .012em !important; }
+.results-main .results-row div { min-width: 0; }
+.results-row p {
+  margin: 12px 0 0;
+  max-width: 420px;
+  font-family: var(--tbs-text-font) !important;
+  font-size: 12px;
+  line-height: 1.42;
+  letter-spacing: -.005em !important;
+  text-transform: none !important;
+  color: rgba(5,5,5,.72);
+}
+.results-tabs a { color: inherit; }
+@media (max-width: 900px) {
+  .results-row { align-items: start !important; }
+  .results-row p { display: none; }
+}
+
+@media (max-width: 900px) {
+  .results-row {
+    min-height: 154px !important;
+    padding-block: 22px !important;
+  }
+  .results-row h2 {
+    line-height: .92 !important;
+  }
+  .results-list { padding-bottom: 22px; }
+}

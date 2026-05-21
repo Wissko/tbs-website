@@ -19,7 +19,7 @@ export default function ArticlePage() {
       <section className="article-canvas">
         <Header />
         <nav className="article-nav">
-          <Link href="/journal">← BACK TO JOURNAL</Link>
+          <Link href="/results">← BACK TO RESULTS</Link>
           <a href="#next">NEXT ARTICLE →</a>
         </nav>
 
@@ -33,7 +33,7 @@ export default function ArticlePage() {
               <p>We&apos;re entering a new era where attention is fragmented, communities are fluid, and authenticity is the new currency.<br /><br />Brands that listen, adapt and participate meaningfully will lead the conversation.</p>
               <p>It&apos;s no longer about broadcasting messages. It&apos;s about building relevance, sparking dialogue and creating impact.<br /><br />This is the new language. Are you speaking it?</p>
             </div>
-            <Link className="article-button" href="/journal">VIEW ALL ARTICLES <span>→</span></Link>
+            <Link className="article-button" href="/results">VIEW RESULTS <span>→</span></Link>
           </div>
           <figure className="article-image">
             <Image src="/mockups/article-hero.jpg" alt="Blurred figure in motion" fill priority sizes="706px" />

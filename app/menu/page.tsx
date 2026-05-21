@@ -6,7 +6,7 @@ const primaryLinks = [
   { label: "HOME", href: "/" },
   { label: "SERVICES", href: "/work" },
   { label: "ABOUT", href: "/about" },
-  { label: "JOURNAL", href: "/journal" },
+  { label: "RESULTS", href: "/results" },
   { label: "CONTACT", href: "/contact" },
   { label: "BOOK A CALL", href: "/contact", cta: true },
 ];
@@ -48,7 +48,7 @@ export default function MenuPage() {
             </div>
             <div>
               <h2>COMPANY</h2>
-              <p><Link href="/about">About</Link><br /><Link href="/journal">Journal</Link><br /><Link href="/careers">Careers</Link><br /><Link href="/contact">Contact</Link></p>
+              <p><Link href="/about">About</Link><br /><Link href="/results">Results</Link><br /><Link href="/careers">Careers</Link><br /><Link href="/contact">Contact</Link></p>
             </div>
           </div>
         </aside>
