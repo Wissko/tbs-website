@@ -36,28 +36,44 @@ const slides = [
 
 export default function HomeExperienceCarousel() {
   const trackRef = useRef<HTMLDivElement>(null);
+  const activeRef = useRef(0);
+  const suppressScrollUpdateRef = useRef<number | null>(null);
+  const wheelLockRef = useRef(false);
   const [active, setActive] = useState(0);
 
   const activeSlide = slides[active];
 
+  const setActiveSlide = useCallback((index: number) => {
+    activeRef.current = index;
+    setActive(index);
+  }, []);
+
   const scrollToSlide = useCallback((index: number) => {
     const track = trackRef.current;
-    const card = track?.querySelectorAll<HTMLElement>("[data-carousel-card]")[index];
+    const boundedIndex = (index + slides.length) % slides.length;
+    const card = track?.querySelectorAll<HTMLElement>("[data-carousel-card]")[boundedIndex];
     if (!track || !card) return;
 
+    if (suppressScrollUpdateRef.current) {
+      window.clearTimeout(suppressScrollUpdateRef.current);
+    }
+    suppressScrollUpdateRef.current = window.setTimeout(() => {
+      suppressScrollUpdateRef.current = null;
+    }, 650);
+
+    setActiveSlide(boundedIndex);
     track.scrollTo({
       left: card.offsetLeft - (track.clientWidth - card.offsetWidth) / 2,
       behavior: "smooth",
     });
-    setActive(index);
-  }, []);
+  }, [setActiveSlide]);
 
-  const goToPrevious = () => scrollToSlide((active - 1 + slides.length) % slides.length);
-  const goToNext = () => scrollToSlide((active + 1) % slides.length);
+  const goToPrevious = () => scrollToSlide(activeRef.current - 1);
+  const goToNext = () => scrollToSlide(activeRef.current + 1);
 
   const updateActiveSlide = useCallback(() => {
     const track = trackRef.current;
-    if (!track) return;
+    if (!track || suppressScrollUpdateRef.current) return;
 
     const trackBox = track.getBoundingClientRect();
     const trackCenter = trackBox.left + trackBox.width / 2;
@@ -74,8 +90,20 @@ export default function HomeExperienceCarousel() {
       }
     });
 
-    setActive(nearestIndex);
-  }, []);
+    setActiveSlide(nearestIndex);
+  }, [setActiveSlide]);
+
+  const onWheel = (event: React.WheelEvent<HTMLDivElement>) => {
+    const horizontalIntent = Math.abs(event.deltaX) > Math.abs(event.deltaY) || event.shiftKey;
+    if (!horizontalIntent || wheelLockRef.current) return;
+
+    event.preventDefault();
+    wheelLockRef.current = true;
+    scrollToSlide(activeRef.current + (event.deltaX > 0 || event.deltaY > 0 ? 1 : -1));
+    window.setTimeout(() => {
+      wheelLockRef.current = false;
+    }, 520);
+  };
 
   return (
     <section className="home-carousel-section" aria-labelledby="home-carousel-title">
@@ -105,6 +133,7 @@ export default function HomeExperienceCarousel() {
         ref={trackRef}
         className="home-carousel-track"
         onScroll={updateActiveSlide}
+        onWheel={onWheel}
       >
         {slides.map((slide, index) => (
           <article
