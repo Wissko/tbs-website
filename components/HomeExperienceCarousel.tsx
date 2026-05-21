@@ -36,7 +36,7 @@ const slides = [
 
 export default function HomeExperienceCarousel() {
   const trackRef = useRef<HTMLDivElement>(null);
-  const dragRef = useRef({ active: false, startX: 0, scrollLeft: 0 });
+  const dragRef = useRef({ active: false, decided: false, startX: 0, startY: 0, scrollLeft: 0 });
   const [active, setActive] = useState(0);
 
   const activeSlide = slides[active];
@@ -69,30 +69,53 @@ export default function HomeExperienceCarousel() {
         const track = trackRef.current;
         if (!track) return;
         dragRef.current = {
-          active: true,
+          active: false,
+          decided: false,
           startX: event.clientX,
+          startY: event.clientY,
           scrollLeft: track.scrollLeft,
         };
-        track.setPointerCapture(event.pointerId);
-        track.classList.add("is-dragging");
       },
       onPointerMove: (event: React.PointerEvent<HTMLDivElement>) => {
         const track = trackRef.current;
-        if (!track || !dragRef.current.active) return;
-        const delta = event.clientX - dragRef.current.startX;
-        track.scrollLeft = dragRef.current.scrollLeft - delta;
+        if (!track) return;
+
+        const deltaX = event.clientX - dragRef.current.startX;
+        const deltaY = event.clientY - dragRef.current.startY;
+
+        if (!dragRef.current.decided) {
+          if (Math.abs(deltaX) < 8 && Math.abs(deltaY) < 8) return;
+          dragRef.current.decided = true;
+
+          if (Math.abs(deltaY) > Math.abs(deltaX)) {
+            dragRef.current.active = false;
+            return;
+          }
+
+          dragRef.current.active = true;
+          track.setPointerCapture(event.pointerId);
+          track.classList.add("is-dragging");
+        }
+
+        if (!dragRef.current.active) return;
+        event.preventDefault();
+        track.scrollLeft = dragRef.current.scrollLeft - deltaX;
       },
       onPointerUp: (event: React.PointerEvent<HTMLDivElement>) => {
         const track = trackRef.current;
         if (!track) return;
         dragRef.current.active = false;
-        track.releasePointerCapture(event.pointerId);
+        dragRef.current.decided = false;
+        if (track.hasPointerCapture(event.pointerId)) {
+          track.releasePointerCapture(event.pointerId);
+        }
         track.classList.remove("is-dragging");
         updateActiveSlide();
       },
       onPointerCancel: () => {
         const track = trackRef.current;
         dragRef.current.active = false;
+        dragRef.current.decided = false;
         track?.classList.remove("is-dragging");
       },
     }),
