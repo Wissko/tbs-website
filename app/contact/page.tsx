@@ -21,7 +21,17 @@ export default function ContactPage() {
         <Link className="contact-back" href="/">← BACK TO ALL PAGES</Link>
 
         <section className="contact-left">
-          <h1>LET&apos;S BUILD<br />SOMETHING ICONIC<br />TOGETHER</h1>
+          <h1 className="contact-title-a11y">LET&apos;S BUILD SOMETHING ICONIC TOGETHER</h1>
+          <figure className="contact-title-art" aria-hidden="true">
+            <Image
+              src="/images/uploads/contact-lets-build-title.png"
+              alt=""
+              width={1536}
+              height={1024}
+              priority
+              sizes="(max-width: 900px) 92vw, 580px"
+            />
+          </figure>
           <p className="contact-intro">Have a project in mind or just want to say hello?<br />We&apos;d love to hear from you.</p>
           <div className="contact-rule" />
 
