@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ScrollTimeline from "../../components/ScrollTimeline";
 import SiteFooter from "../../components/SiteFooter";
 
 export default function AboutPage() {
@@ -18,6 +19,7 @@ export default function AboutPage() {
           <Link href="/" className="simple-page-back">← Back home</Link>
         </div>
       </section>
+      <ScrollTimeline />
       <SiteFooter />
     </main>
   );
