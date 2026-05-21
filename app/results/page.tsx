@@ -1,13 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import SiteFooter from "../../components/SiteFooter";
-
-const results = [
-  { metric: "01", title: <>BETTER FIRST<br />IMPRESSION</>, text: "A sharper website and clearer positioning make the business easier to trust from the first click.", src: "/mockups/journal-01.jpg" },
-  { metric: "02", title: <>FASTER RESPONSE<br />TIME</>, text: "Booking and contact flows remove friction so prospects can act without waiting for manual back-and-forth.", src: "/mockups/journal-02.jpg" },
-  { metric: "03", title: <>LESS ADMIN<br />DRAG</>, text: "Automated scheduling, reminders, and follow-up reduce repetitive work for the team.", src: "/mockups/journal-03.jpg" },
-  { metric: "04", title: <>MORE REPEAT<br />REVENUE</>, text: "Wallet loyalty and CRM journeys bring past clients back instead of letting demand go quiet.", src: "/mockups/journal-04.jpg" },
-];
+import { resultItems } from "../../lib/results";
 
 function Header() {
   return (
@@ -22,7 +16,7 @@ function Header() {
 
 export default function ResultsPage() {
   return (
-    <main className="journal-shell">
+    <main className="journal-shell results-shell">
       <section className="journal-canvas results-canvas">
         <Header />
 
@@ -44,16 +38,16 @@ export default function ResultsPage() {
           </nav>
 
           <div className="journal-list results-list" id="outcomes">
-            {results.map((item) => (
-              <article className="journal-row results-row" key={item.metric}>
+            {resultItems.map((item) => (
+              <Link className="journal-row results-row" href={`/results/${item.slug}`} key={item.slug}>
                 <Image src={item.src} alt="Decorative business system visual" width={304} height={118} />
                 <div>
-                  <time>{item.metric} / WHY IT WORKS</time>
+                  <time>{item.metric} / {item.label}</time>
                   <h2>{item.title}</h2>
-                  <p>{item.text}</p>
+                  <p>{item.short}</p>
                 </div>
-                <Link href="/contact" aria-label="Book a strategy call">→</Link>
-              </article>
+                <span aria-hidden="true">→</span>
+              </Link>
             ))}
           </div>
         </section>
