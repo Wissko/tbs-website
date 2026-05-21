@@ -25,7 +25,7 @@ export default function ResultsPage() {
             <h1 id="results-title" className="results-title-a11y">RESULTS</h1>
             <figure className="results-reference-title-art" aria-hidden="true">
               <Image
-                src="/images/uploads/results-title-current.png"
+                src="/images/uploads/results-title-current-transparent.png"
                 alt=""
                 width={1280}
                 height={640}
