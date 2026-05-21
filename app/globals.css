@@ -3972,3 +3972,24 @@ html, body { overflow-x: hidden; }
     grid-column: 1 / -1;
   }
 }
+
+/* Results title reset: match the typography scale used on the other pages. */
+.results-reference-title-text {
+  margin: 34px 0 28px;
+  font-family: var(--tbs-display-font) !important;
+  font-size: clamp(64px, 7vw, 104px) !important;
+  line-height: .82 !important;
+  font-weight: 900 !important;
+  letter-spacing: var(--tbs-display-spacing) !important;
+  text-transform: uppercase !important;
+  color: #050505 !important;
+  transform: scaleX(.86) !important;
+  transform-origin: left top !important;
+}
+@media (max-width: 900px) {
+  .results-reference-title-text {
+    margin: 30px 0 24px;
+    font-size: clamp(58px, 17vw, 86px) !important;
+    letter-spacing: -.006em !important;
+  }
+}

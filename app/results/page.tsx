@@ -22,17 +22,7 @@ export default function ResultsPage() {
         <section className="results-reference-hero" aria-labelledby="results-title">
           <div>
             <Link className="results-reference-back" href="/">← Back to home</Link>
-            <h1 id="results-title" className="results-title-a11y">RESULTS</h1>
-            <figure className="results-reference-title-art" aria-hidden="true">
-              <Image
-                src="/images/uploads/results-title-art-transparent.png"
-                alt=""
-                width={1280}
-                height={640}
-                priority
-                sizes="(max-width: 900px) 92vw, 760px"
-              />
-            </figure>
+            <h1 id="results-title" className="results-reference-title-text">RESULTS</h1>
             <p>We remove the digital weak points that quietly cost businesses revenue: weak trust, slow response, manual booking loops, and absent follow-up.</p>
             <nav className="results-reference-section-nav" aria-label="Results sections">
               <a href="#outcomes">Outcome</a>
