@@ -48,7 +48,7 @@ export default function MenuPage() {
             </div>
             <div>
               <h2>COMPANY</h2>
-              <p><Link href="/about">About</Link><br /><Link href="/results">Results</Link><br /><Link href="/careers">Careers</Link><br /><Link href="/contact">Contact</Link></p>
+              <p><Link href="/about">About</Link><br /><Link href="/results">Results</Link><br /><Link href="/contact">Contact</Link></p>
             </div>
           </div>
         </aside>
