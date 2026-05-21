@@ -3199,3 +3199,66 @@ html, body { overflow-x: hidden; }
     margin-bottom: 28px !important;
   }
 }
+
+/* Services page stats: use real crisp typography, not the compressed mockup image strip. */
+.work-services-content .work-services-stats {
+  background: #050505 !important;
+  border: 1px solid rgba(5, 5, 5, .88) !important;
+  color: #f3f3ef !important;
+  min-height: 118px !important;
+  overflow: hidden !important;
+}
+.work-services-content .work-services-stats > * {
+  opacity: 1 !important;
+  border-left: 1px solid rgba(243, 243, 239, .18) !important;
+  min-height: 118px !important;
+}
+.work-services-content .work-services-stats > *:first-child {
+  border-left: 0 !important;
+}
+.work-services-content .work-services-stats div {
+  justify-content: center !important;
+  padding: 0 28px !important;
+}
+.work-services-content .work-services-stats strong {
+  color: #f3f3ef !important;
+  font-size: clamp(36px, 3.5vw, 58px) !important;
+  line-height: .86 !important;
+  letter-spacing: -.018em !important;
+}
+.work-services-content .work-services-stats span {
+  color: rgba(243, 243, 239, .72) !important;
+  font-size: 11px !important;
+  letter-spacing: .08em !important;
+}
+.work-services-content .work-services-stats a {
+  color: #f3f3ef !important;
+  background: #151515 !important;
+  min-height: 118px !important;
+}
+@media (max-width: 900px) {
+  .work-services-content .work-services-stats {
+    margin-top: 18px !important;
+    background: #050505 !important;
+  }
+  .work-services-content .work-services-stats > * {
+    min-height: 96px !important;
+    border-color: rgba(243, 243, 239, .18) !important;
+  }
+  .work-services-content .work-services-stats strong {
+    font-size: clamp(38px, 12vw, 58px) !important;
+  }
+}
+@media (max-width: 520px) {
+  .work-services-content .work-services-stats > * {
+    border-left: 0 !important;
+    border-top: 1px solid rgba(243, 243, 239, .18) !important;
+    padding: 26px 24px !important;
+  }
+  .work-services-content .work-services-stats > *:first-child {
+    border-top: 0 !important;
+  }
+  .work-services-content .work-services-stats a {
+    justify-content: flex-start !important;
+  }
+}
