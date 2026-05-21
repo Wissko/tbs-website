@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import ScrollTimeline from "../../components/ScrollTimeline";
 import SiteFooter from "../../components/SiteFooter";
@@ -15,7 +16,16 @@ export default function AboutPage() {
         <div className="about-hero-content">
           <span className="about-hero-eyebrow">STUDIO PROFILE</span>
           <span className="about-hero-cross" aria-hidden="true">+</span>
-          <h1>ABOUT TBS</h1>
+          <h1 className="about-title-a11y">ABOUT TBS</h1>
+          <figure className="about-title-art" aria-hidden="true">
+            <Image
+              src="/images/uploads/about-title-design.png"
+              alt=""
+              fill
+              priority
+              sizes="(max-width: 900px) 92vw, 820px"
+            />
+          </figure>
           <p>
             We build premium digital systems that make businesses easier to trust,
             easier to contact, and easier to choose.
