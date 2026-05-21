@@ -1,4 +1,5 @@
 import Image from "next/image";
+import SiteFooter from "../components/SiteFooter";
 
 export default function Home() {
   return (
@@ -62,6 +63,7 @@ export default function Home() {
           <p>ALWAYS × 24.365° C</p>
         </footer>
       </section>
+      <SiteFooter />
     </main>
   );
 }
