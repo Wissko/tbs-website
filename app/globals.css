@@ -281,7 +281,7 @@ a { color: inherit; text-decoration: none; }
   scroll-behavior: smooth;
   cursor: default;
   user-select: none;
-  touch-action: pan-x pan-y;
+  touch-action: pan-y;
   scrollbar-width: none;
 }
 .home-carousel-track::-webkit-scrollbar { display: none; }

@@ -39,6 +39,7 @@ export default function HomeExperienceCarousel() {
   const activeRef = useRef(0);
   const suppressScrollUpdateRef = useRef<number | null>(null);
   const wheelLockRef = useRef(false);
+  const pointerStartRef = useRef<{ x: number; y: number } | null>(null);
   const [active, setActive] = useState(0);
 
   const activeSlide = slides[active];
@@ -50,7 +51,7 @@ export default function HomeExperienceCarousel() {
 
   const scrollToSlide = useCallback((index: number) => {
     const track = trackRef.current;
-    const boundedIndex = (index + slides.length) % slides.length;
+    const boundedIndex = Math.max(0, Math.min(slides.length - 1, index));
     const card = track?.querySelectorAll<HTMLElement>("[data-carousel-card]")[boundedIndex];
     if (!track || !card) return;
 
@@ -59,7 +60,7 @@ export default function HomeExperienceCarousel() {
     }
     suppressScrollUpdateRef.current = window.setTimeout(() => {
       suppressScrollUpdateRef.current = null;
-    }, 650);
+    }, 850);
 
     setActiveSlide(boundedIndex);
     track.scrollTo({
@@ -95,14 +96,33 @@ export default function HomeExperienceCarousel() {
 
   const onWheel = (event: React.WheelEvent<HTMLDivElement>) => {
     const horizontalIntent = Math.abs(event.deltaX) > Math.abs(event.deltaY) || event.shiftKey;
-    if (!horizontalIntent || wheelLockRef.current) return;
+    const strongEnough = Math.abs(event.deltaX) > 28 || (event.shiftKey && Math.abs(event.deltaY) > 28);
+    if (!horizontalIntent || !strongEnough || wheelLockRef.current) return;
 
     event.preventDefault();
     wheelLockRef.current = true;
     scrollToSlide(activeRef.current + (event.deltaX > 0 || event.deltaY > 0 ? 1 : -1));
     window.setTimeout(() => {
       wheelLockRef.current = false;
-    }, 520);
+    }, 900);
+  };
+
+  const onPointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (event.pointerType === "mouse") return;
+    pointerStartRef.current = { x: event.clientX, y: event.clientY };
+  };
+
+  const onPointerUp = (event: React.PointerEvent<HTMLDivElement>) => {
+    const start = pointerStartRef.current;
+    pointerStartRef.current = null;
+    if (!start) return;
+
+    const deltaX = event.clientX - start.x;
+    const deltaY = event.clientY - start.y;
+    const horizontalSwipe = Math.abs(deltaX) > 54 && Math.abs(deltaX) > Math.abs(deltaY) * 1.35;
+    if (!horizontalSwipe) return;
+
+    scrollToSlide(activeRef.current + (deltaX < 0 ? 1 : -1));
   };
 
   return (
@@ -134,6 +154,9 @@ export default function HomeExperienceCarousel() {
         className="home-carousel-track"
         onScroll={updateActiveSlide}
         onWheel={onWheel}
+        onPointerDown={onPointerDown}
+        onPointerUp={onPointerUp}
+        onPointerCancel={() => { pointerStartRef.current = null; }}
       >
         {slides.map((slide, index) => (
           <article
