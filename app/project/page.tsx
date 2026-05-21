@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import SiteFooter from "../../components/SiteFooter";
 
 function Header() {
   return (
@@ -47,6 +48,7 @@ export default function ProjectPage() {
 
         <a className="project-view" href="#view"><span>VIEW PROJECT</span><b>→</b></a>
       </section>
+      <SiteFooter />
     </main>
   );
 }

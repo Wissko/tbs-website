@@ -1,4 +1,5 @@
 import Link from "next/link";
+import SiteFooter from "../../components/SiteFooter";
 
 export default function AboutPage() {
   return (
@@ -17,6 +18,7 @@ export default function AboutPage() {
           <Link href="/" className="simple-page-back">← Back home</Link>
         </div>
       </section>
+      <SiteFooter />
     </main>
   );
 }

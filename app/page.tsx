@@ -7,7 +7,7 @@ export default function Home() {
     <main className="home-shell" aria-label="TBS homepage">
       <section className="home-canvas">
         <header className="home-header">
-          <div className="home-brand">TBS®</div>
+          <div className="home-brand">TBS°</div>
           <p className="home-kicker">
             Digital Creative Studio<br />
             Building Bold Experiences<br />

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import SiteFooter from "../../components/SiteFooter";
 
 const works = [
   { n: "01", title: "MAISON NOIR", type: "WEBSITE", src: "/mockups/work-card-01.jpg", className: "work-card small" },
@@ -58,6 +59,7 @@ export default function WorkPage() {
           </footer>
         </section>
       </section>
+      <SiteFooter />
     </main>
   );
 }

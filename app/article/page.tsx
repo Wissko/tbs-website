@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import SiteFooter from "../../components/SiteFooter";
 
 function Header() {
   return (
@@ -44,6 +45,7 @@ export default function ArticlePage() {
           <b /> <a>X</a> <b /> <a>in</a> <b /> <a>◎</a> <b /> <a>↗</a>
         </footer>
       </section>
+      <SiteFooter />
     </main>
   );
 }

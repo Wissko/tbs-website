@@ -1186,3 +1186,170 @@ a { color: inherit; text-decoration: none; }
     filter: none !important;
   }
 }
+
+/* Full-bleed correction: remove the unwanted outer black presentation frame. */
+.home-shell,
+.work-shell,
+.project-shell,
+.journal-shell,
+.article-shell,
+.contact-shell,
+.menu-page-shell,
+.simple-page-shell {
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  justify-content: flex-start !important;
+  place-items: initial !important;
+  min-height: 100vh;
+  width: 100%;
+}
+.home-canvas,
+.work-canvas,
+.project-canvas,
+.journal-canvas,
+.article-canvas,
+.contact-canvas,
+.menu-page-canvas,
+.simple-page-canvas {
+  width: 100% !important;
+  max-width: none !important;
+  min-height: 100vh !important;
+  height: auto !important;
+  aspect-ratio: auto !important;
+  border: 0 !important;
+}
+.home-canvas,
+.work-canvas,
+.project-canvas,
+.journal-canvas,
+.article-canvas,
+.contact-canvas,
+.menu-page-canvas,
+.simple-page-canvas {
+  flex: 0 0 auto;
+}
+.site-footer {
+  flex: 0 0 auto;
+  align-self: stretch;
+  width: 100%;
+  max-width: none;
+  margin-top: 0;
+}
+
+/* Post-audit responsive corrections. */
+@media (max-width: 900px) {
+  .work-content h1,
+  .work-filters,
+  .work-grid,
+  .work-stats {
+    position: static !important;
+  }
+  .work-content h1 {
+    font-size: clamp(54px, 16vw, 90px) !important;
+  }
+  .work-filters {
+    display: flex !important;
+    width: 100% !important;
+    height: auto !important;
+    gap: 16px !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+    padding: 20px 0 18px !important;
+  }
+  .work-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: none !important;
+    width: 100% !important;
+    height: auto !important;
+    gap: 12px !important;
+  }
+  .work-card,
+  .work-card.tall {
+    min-height: 320px !important;
+    grid-row: auto !important;
+  }
+  .work-stats {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin-top: 16px !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    background: transparent !important;
+    border: 1px solid #cdcdc8 !important;
+  }
+  .work-stats > * {
+    opacity: 1 !important;
+    min-height: 86px !important;
+  }
+  .work-stats a {
+    grid-column: span 2 !important;
+  }
+  .contact-image {
+    margin-bottom: 0 !important;
+  }
+}
+
+html, body { overflow-x: hidden; }
+
+@media (max-width: 900px) {
+  .work-content {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    overflow: hidden !important;
+  }
+  .work-filters {
+    max-width: 100% !important;
+    margin-right: 0 !important;
+    padding-right: 20px !important;
+    scrollbar-width: none !important;
+  }
+  .work-filters::-webkit-scrollbar { display: none; }
+  .work-grid {
+    overflow: visible !important;
+  }
+  .work-card,
+  .work-card.tall {
+    min-height: 300px !important;
+    aspect-ratio: 1 / .92 !important;
+  }
+  .work-card::after {
+    display: block !important;
+    background: linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.04) 42%, rgba(0,0,0,.62)) !important;
+  }
+  .work-card img {
+    object-fit: cover !important;
+    object-position: center center !important;
+  }
+  .work-number {
+    top: 18px !important;
+    left: 18px !important;
+  }
+  .work-caption {
+    left: 18px !important;
+    right: 18px !important;
+    bottom: 18px !important;
+    max-width: calc(100% - 36px) !important;
+  }
+  .work-caption h2 {
+    font-size: clamp(24px, 8vw, 34px) !important;
+    overflow-wrap: anywhere !important;
+  }
+}
+
+@media (max-width: 520px) {
+  .work-stats {
+    grid-template-columns: 1fr !important;
+  }
+  .work-stats > * {
+    border-left: 0 !important;
+    border-top: 1px solid #cdcdc8 !important;
+    padding: 24px 22px !important;
+    min-height: 82px !important;
+  }
+  .work-stats > *:first-child { border-top: 0 !important; }
+  .work-stats a { grid-column: auto !important; justify-content: flex-start !important; }
+}

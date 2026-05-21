@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import SiteFooter from "../../components/SiteFooter";
 
 const articles = [
   { date: "MAY 16, 2024", title: <>THE NEW LANGUAGE<br />OF DIGITAL CULTURE</>, src: "/mockups/journal-01.jpg" },
@@ -57,6 +58,7 @@ export default function JournalPage() {
           </div>
         </section>
       </section>
+      <SiteFooter />
     </main>
   );
 }

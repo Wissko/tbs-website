@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import SiteFooter from "../../components/SiteFooter";
 
 function Header() {
   return (
@@ -50,13 +51,8 @@ export default function ContactPage() {
           <Image src="/mockups/contact-hero.jpg" alt="Architectural concrete curve" fill priority sizes="577px" />
         </figure>
 
-        <footer className="contact-footer">
-          <div className="star">✳</div>
-          <h2>SHAPING IDEAS.<br />BUILDING IMPACT.</h2>
-          <p>© 2024 TBS STUDIO<br />All rights reserved.</p>
-          <nav><a>PRIVACY POLICY</a><a>TERMS OF SERVICE</a><a>CAREERS</a></nav>
-        </footer>
       </section>
+      <SiteFooter />
     </main>
   );
 }
