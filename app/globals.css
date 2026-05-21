@@ -2446,3 +2446,16 @@ html, body { overflow-x: hidden; }
     transform: scaleX(.76) !important;
   }
 }
+
+/* Mobile home hero: make the main title more imposing while keeping it readable. */
+@media (max-width: 560px) {
+  .home-copy { top: 96px !important; }
+  .home-copy h1 {
+    font-size: clamp(72px, 20vw, 92px) !important;
+    line-height: .82 !important;
+    max-width: 7.2ch !important;
+    letter-spacing: .01em !important;
+    transform: scaleX(.82) !important;
+  }
+  .home-intro { margin-top: 24px !important; }
+}
