@@ -60,13 +60,29 @@ export default function HomeExperienceCarousel() {
     }
     suppressScrollUpdateRef.current = window.setTimeout(() => {
       suppressScrollUpdateRef.current = null;
-    }, 850);
+    }, 1500);
 
     setActiveSlide(boundedIndex);
-    track.scrollTo({
-      left: card.offsetLeft - (track.clientWidth - card.offsetWidth) / 2,
-      behavior: "smooth",
-    });
+
+    const start = track.scrollLeft;
+    const target = card.offsetLeft - (track.clientWidth - card.offsetWidth) / 2;
+    const distance = target - start;
+    const duration = 1250;
+    const startedAt = performance.now();
+    const easeInOutCinematic = (t: number) =>
+      t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+    const animate = (now: number) => {
+      const elapsed = now - startedAt;
+      const progress = Math.min(elapsed / duration, 1);
+      track.scrollLeft = start + distance * easeInOutCinematic(progress);
+
+      if (progress < 1) {
+        window.requestAnimationFrame(animate);
+      }
+    };
+
+    window.requestAnimationFrame(animate);
   }, [setActiveSlide]);
 
   const goToPrevious = () => scrollToSlide(activeRef.current - 1);
@@ -104,7 +120,7 @@ export default function HomeExperienceCarousel() {
     scrollToSlide(activeRef.current + (event.deltaX > 0 || event.deltaY > 0 ? 1 : -1));
     window.setTimeout(() => {
       wheelLockRef.current = false;
-    }, 900);
+    }, 1350);
   };
 
   const onPointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
