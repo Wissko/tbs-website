@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 const slides = [
   {
@@ -35,96 +35,58 @@ const slides = [
 ];
 
 export default function HomeExperienceCarousel() {
+  const viewportRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<(HTMLElement | null)[]>([]);
   const activeRef = useRef(0);
-  const suppressScrollUpdateRef = useRef<number | null>(null);
   const wheelLockRef = useRef(false);
   const pointerStartRef = useRef<{ x: number; y: number } | null>(null);
   const [active, setActive] = useState(0);
+  const [offset, setOffset] = useState(0);
 
   const activeSlide = slides[active];
 
-  const setActiveSlide = useCallback((index: number) => {
-    activeRef.current = index;
-    setActive(index);
+  const updateOffset = useCallback((index = activeRef.current) => {
+    const viewport = viewportRef.current;
+    const card = cardRefs.current[index];
+    if (!viewport || !card) return;
+
+    const viewportCenter = viewport.clientWidth / 2;
+    const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+    setOffset(viewportCenter - cardCenter);
   }, []);
 
-  const scrollToSlide = useCallback((index: number) => {
-    const track = trackRef.current;
+  const setActiveSlide = useCallback((index: number) => {
     const boundedIndex = Math.max(0, Math.min(slides.length - 1, index));
-    const card = track?.querySelectorAll<HTMLElement>("[data-carousel-card]")[boundedIndex];
-    if (!track || !card) return;
+    activeRef.current = boundedIndex;
+    setActive(boundedIndex);
+    window.requestAnimationFrame(() => updateOffset(boundedIndex));
+  }, [updateOffset]);
 
-    if (suppressScrollUpdateRef.current) {
-      window.clearTimeout(suppressScrollUpdateRef.current);
-    }
-    suppressScrollUpdateRef.current = window.setTimeout(() => {
-      suppressScrollUpdateRef.current = null;
-    }, 1500);
+  const goToPrevious = () => setActiveSlide(activeRef.current - 1);
+  const goToNext = () => setActiveSlide(activeRef.current + 1);
 
-    setActiveSlide(boundedIndex);
-
-    const start = track.scrollLeft;
-    const target = card.offsetLeft - (track.clientWidth - card.offsetWidth) / 2;
-    const distance = target - start;
-    const duration = 1250;
-    const startedAt = performance.now();
-    const easeInOutCinematic = (t: number) =>
-      t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-
-    const animate = (now: number) => {
-      const elapsed = now - startedAt;
-      const progress = Math.min(elapsed / duration, 1);
-      track.scrollLeft = start + distance * easeInOutCinematic(progress);
-
-      if (progress < 1) {
-        window.requestAnimationFrame(animate);
-      }
-    };
-
-    window.requestAnimationFrame(animate);
-  }, [setActiveSlide]);
-
-  const goToPrevious = () => scrollToSlide(activeRef.current - 1);
-  const goToNext = () => scrollToSlide(activeRef.current + 1);
-
-  const updateActiveSlide = useCallback(() => {
-    const track = trackRef.current;
-    if (!track || suppressScrollUpdateRef.current) return;
-
-    const trackBox = track.getBoundingClientRect();
-    const trackCenter = trackBox.left + trackBox.width / 2;
-    let nearestIndex = 0;
-    let nearestDistance = Number.POSITIVE_INFINITY;
-
-    Array.from(track.querySelectorAll<HTMLElement>("[data-carousel-card]")).forEach((card, index) => {
-      const cardBox = card.getBoundingClientRect();
-      const cardCenter = cardBox.left + cardBox.width / 2;
-      const distance = Math.abs(trackCenter - cardCenter);
-      if (distance < nearestDistance) {
-        nearestDistance = distance;
-        nearestIndex = index;
-      }
-    });
-
-    setActiveSlide(nearestIndex);
-  }, [setActiveSlide]);
+  useEffect(() => {
+    updateOffset(activeRef.current);
+    const onResize = () => updateOffset(activeRef.current);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, [updateOffset]);
 
   const onWheel = (event: React.WheelEvent<HTMLDivElement>) => {
-    const horizontalIntent = Math.abs(event.deltaX) > Math.abs(event.deltaY) || event.shiftKey;
-    const strongEnough = Math.abs(event.deltaX) > 28 || (event.shiftKey && Math.abs(event.deltaY) > 28);
+    const horizontalIntent = Math.abs(event.deltaX) > Math.abs(event.deltaY) * 1.15 || event.shiftKey;
+    const strongEnough = Math.abs(event.deltaX) > 36 || (event.shiftKey && Math.abs(event.deltaY) > 36);
     if (!horizontalIntent || !strongEnough || wheelLockRef.current) return;
 
     event.preventDefault();
     wheelLockRef.current = true;
-    scrollToSlide(activeRef.current + (event.deltaX > 0 || event.deltaY > 0 ? 1 : -1));
+    setActiveSlide(activeRef.current + (event.deltaX > 0 || event.deltaY > 0 ? 1 : -1));
     window.setTimeout(() => {
       wheelLockRef.current = false;
-    }, 1350);
+    }, 1500);
   };
 
   const onPointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
-    if (event.pointerType === "mouse") return;
     pointerStartRef.current = { x: event.clientX, y: event.clientY };
   };
 
@@ -135,17 +97,17 @@ export default function HomeExperienceCarousel() {
 
     const deltaX = event.clientX - start.x;
     const deltaY = event.clientY - start.y;
-    const horizontalSwipe = Math.abs(deltaX) > 54 && Math.abs(deltaX) > Math.abs(deltaY) * 1.35;
+    const horizontalSwipe = Math.abs(deltaX) > 58 && Math.abs(deltaX) > Math.abs(deltaY) * 1.4;
     if (!horizontalSwipe) return;
 
-    scrollToSlide(activeRef.current + (deltaX < 0 ? 1 : -1));
+    setActiveSlide(activeRef.current + (deltaX < 0 ? 1 : -1));
   };
 
   return (
     <section className="home-carousel-section" aria-labelledby="home-carousel-title">
       <div className="home-carousel-meta">
         <span>TBS° FIELD NOTES</span>
-        <span>DRAG / SCROLL</span>
+        <span>SWIPE / DRAG</span>
       </div>
 
       <div className="home-carousel-copy" aria-live="polite">
@@ -161,28 +123,34 @@ export default function HomeExperienceCarousel() {
       </div>
 
       <div className="home-carousel-controls" aria-label="Carousel controls">
-        <button type="button" onClick={goToPrevious} aria-label="Previous slide">←</button>
-        <button type="button" onClick={goToNext} aria-label="Next slide">→</button>
+        <button type="button" onClick={goToPrevious} aria-label="Previous slide" disabled={active === 0}>←</button>
+        <button type="button" onClick={goToNext} aria-label="Next slide" disabled={active === slides.length - 1}>→</button>
       </div>
 
       <div
-        ref={trackRef}
-        className="home-carousel-track"
-        onScroll={updateActiveSlide}
+        ref={viewportRef}
+        className="home-carousel-viewport"
         onWheel={onWheel}
         onPointerDown={onPointerDown}
         onPointerUp={onPointerUp}
         onPointerCancel={() => { pointerStartRef.current = null; }}
       >
-        {slides.map((slide, index) => (
-          <article
-            className={index === active ? "home-carousel-card is-active" : "home-carousel-card"}
-            data-carousel-card
-            key={slide.title}
-          >
-            <Image src={slide.image} alt={slide.alt} fill sizes="(max-width: 760px) 72vw, 360px" />
-          </article>
-        ))}
+        <div
+          ref={trackRef}
+          className="home-carousel-track"
+          style={{ transform: `translate3d(${offset}px, 0, 0)` }}
+        >
+          {slides.map((slide, index) => (
+            <article
+              ref={(node) => { cardRefs.current[index] = node; }}
+              className={index === active ? "home-carousel-card is-active" : "home-carousel-card"}
+              data-carousel-card
+              key={slide.title}
+            >
+              <Image src={slide.image} alt={slide.alt} fill sizes="(max-width: 760px) 76vw, 330px" />
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );
