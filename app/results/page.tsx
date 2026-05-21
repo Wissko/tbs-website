@@ -22,7 +22,17 @@ export default function ResultsPage() {
 
         <aside className="journal-side results-side">
           <Link className="journal-back" href="/">← BACK TO HOME</Link>
-          <h1>RESULTS</h1>
+          <h1 className="results-title-a11y">RESULTS</h1>
+          <figure className="results-title-art" aria-hidden="true">
+            <Image
+              src="/images/uploads/results-title-art.png"
+              alt=""
+              width={1774}
+              height={887}
+              priority
+              sizes="(max-width: 900px) 92vw, 420px"
+            />
+          </figure>
           <p>We remove the digital weak points that quietly cost businesses revenue: weak trust, slow response, manual booking loops, and absent follow-up.</p>
         </aside>
 
