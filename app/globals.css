@@ -1824,3 +1824,44 @@ html, body { overflow-x: hidden; }
 @media (max-width: 760px) {
   .home-carousel-controls { display: none; }
 }
+
+/* Functional navigation guard: keep page headers/menu above decorative/content layers. */
+.work-header,
+.project-header,
+.contact-header,
+.journal-header,
+.article-header,
+.simple-page-header,
+.home-header {
+  z-index: 30;
+}
+.work-menu,
+.project-menu,
+.contact-menu,
+.journal-menu,
+.article-menu,
+.simple-page-menu,
+.home-menu {
+  position: relative;
+  z-index: 31;
+  pointer-events: auto;
+}
+.work-content,
+.project-hero-image,
+.contact-image {
+  z-index: 1;
+}
+
+@media (max-width: 900px) {
+  .project-header,
+  .contact-header,
+  .work-header {
+    position: relative;
+    z-index: 30;
+  }
+  .project-hero-image,
+  .contact-image {
+    position: relative;
+    z-index: 1;
+  }
+}
