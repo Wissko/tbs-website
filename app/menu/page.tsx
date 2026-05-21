@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const links = ["HOME", "ABOUT", "WORK", "JOURNAL", "LAB", "CONTACT"];
+const links = ["HOME", "ABOUT", "WORK", "JOURNAL", "CONTACT"];
 
 export default function MenuPage() {
   return (
