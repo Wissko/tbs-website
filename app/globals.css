@@ -2833,3 +2833,88 @@ html, body { overflow-x: hidden; }
     margin: 18px 0 52px;
   }
 }
+
+/* Clean real navigation menu based on TBS service structure. */
+.menu-page-canvas-v2 .menu-page-header p {
+  color: rgba(243,243,241,.78);
+}
+.menu-page-nav-v2 a {
+  grid-template-columns: 70px 1fr 34px;
+}
+.menu-page-nav-v2 b {
+  letter-spacing: .012em !important;
+}
+.menu-page-side-v2 figure::after {
+  content: "WEBSITE · WALLET LOYALTY · BOOKINGS · FOLLOW-UP";
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 16px;
+  z-index: 2;
+  font-family: var(--tbs-display-font) !important;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .045em;
+  color: #f3f3f1;
+}
+.menu-page-services-columns p {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  line-height: 1.25 !important;
+}
+.menu-page-services-columns a {
+  color: inherit;
+  transition: opacity .2s ease, transform .2s ease;
+}
+.menu-page-services-columns a:hover {
+  opacity: .68;
+  transform: translateX(3px);
+}
+.menu-page-footer nav a {
+  color: inherit;
+}
+@media (max-width: 900px) {
+  .menu-page-nav-v2 a {
+    grid-template-columns: 52px 1fr 28px !important;
+  }
+  .menu-page-nav-v2 b {
+    font-size: clamp(46px, 14vw, 68px) !important;
+  }
+  .menu-page-services-columns p {
+    gap: 8px;
+  }
+}
+
+.menu-page-nav-v2 .menu-page-primary-cta {
+  color: #050505;
+  background: #f3f3f1;
+  padding-inline: 16px 14px;
+}
+.menu-page-nav-v2 .menu-page-primary-cta span,
+.menu-page-nav-v2 .menu-page-primary-cta em { color: rgba(5,5,5,.72); }
+.menu-page-nav-v2 .menu-page-primary-cta b {
+  font-size: 56px;
+  letter-spacing: .018em !important;
+}
+@media (max-width: 900px) {
+  .menu-page-nav-v2 .menu-page-primary-cta {
+    margin-top: 8px;
+    min-height: 72px;
+  }
+  .menu-page-nav-v2 .menu-page-primary-cta b {
+    font-size: clamp(34px, 10vw, 48px) !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .menu-page-canvas-v2 {
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+  .menu-page-nav-v2 .menu-page-primary-cta b {
+    font-size: clamp(30px, 8.8vw, 42px) !important;
+    white-space: nowrap;
+  }
+  .menu-page-side-v2 { margin-top: 42px !important; }
+}
