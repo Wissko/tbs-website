@@ -21,10 +21,8 @@ export default function Home() {
         <div className="home-hero">
           <div className="home-copy">
             <h1>
-              BUILT<br />
-              TO<br />
-              BE<br />
-              SEEN.
+              BUILT TO<br />
+              BE SEEN.
             </h1>
             <p className="home-intro">
               We build premium digital systems<br />

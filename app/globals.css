@@ -71,17 +71,18 @@ a { color: inherit; text-decoration: none; }
 .home-copy {
   position: absolute;
   left: 69px;
-  top: 82px;
-  width: 430px;
+  top: 96px;
+  width: 600px;
 }
 .home-copy h1 {
   margin: 0;
   font-family: Impact, "Arial Narrow", "Helvetica Neue Condensed", sans-serif;
-  font-size: clamp(62px, 7.85vw, 86px);
-  line-height: .905;
-  letter-spacing: -.056em;
+  font-size: clamp(76px, 8.9vw, 116px);
+  line-height: .83;
+  letter-spacing: -.064em;
   font-weight: 900;
   text-transform: uppercase;
+  max-width: 6.8ch;
 }
 .home-intro {
   margin: 27px 0 0;
@@ -174,9 +175,9 @@ a { color: inherit; text-decoration: none; }
   .home-canvas { width: 100%; min-height: 100vh; aspect-ratio: auto; }
   .home-header { padding: 22px 20px 0; grid-template-columns: auto 1fr auto; }
   .home-kicker, .home-plus-top { display: none; }
-  .home-copy { left: 22px; top: 92px; width: calc(100% - 44px); }
-  .home-copy h1 { font-size: clamp(57px, 18vw, 112px); line-height: .89; }
-  .home-intro { margin-top: 22px; width: min(285px, 78vw); }
+  .home-copy { left: 22px; top: 104px; width: calc(100% - 44px); }
+  .home-copy h1 { font-size: clamp(60px, 18.5vw, 104px); line-height: .84; max-width: 6.4ch; }
+  .home-intro { margin-top: 26px; width: min(310px, 82vw); }
   .home-image { right: 20px; top: auto; bottom: 82px; width: min(54vw, 330px); height: 47vh; opacity: .9; }
   .home-plus-mid { left: 77%; top: 54%; }
   .scroll-mark { left: 31px; bottom: 128px; width: 72px; height: 72px; }
@@ -186,7 +187,7 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 560px) {
   .home-brand { font-size: 26px; }
   .home-menu { font-size: 11px; gap: 10px; }
-  .home-copy h1 { font-size: clamp(50px, 17vw, 78px); }
+  .home-copy h1 { font-size: clamp(58px, 18vw, 78px); }
   .home-image { width: 58vw; height: 39vh; bottom: 112px; }
   .home-intro { font-size: 10.5px; }
   .scroll-mark { display: none; }
