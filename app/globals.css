@@ -1872,3 +1872,330 @@ html, body { overflow-x: hidden; }
     z-index: 1;
   }
 }
+
+/* Site-wide typography direction: bold condensed display with breathable spacing. */
+:root {
+  --tbs-display-font: Impact, "Arial Narrow", "Helvetica Neue Condensed", sans-serif;
+  --tbs-text-font: Arial, Helvetica, sans-serif;
+  --tbs-display-spacing: -.012em;
+  --tbs-label-spacing: .03em;
+}
+
+.home-brand,
+.work-brand,
+.journal-brand,
+.article-brand,
+.project-brand,
+.contact-brand,
+.menu-page-brand,
+.simple-page-brand,
+.site-footer-logo,
+.home-menu,
+.work-menu,
+.journal-menu,
+.article-menu,
+.project-menu,
+.contact-menu,
+.menu-page-close,
+.simple-page-menu,
+.home-cta,
+.article-button,
+.contact-form button,
+.simple-page-back,
+.home-footer,
+.site-footer-legal,
+.site-footer-links,
+.contact-footer nav,
+.menu-page-footer nav,
+.home-carousel-meta,
+.home-carousel-eyebrow,
+.menu-page-nav span,
+.menu-page-columns h2,
+.contact-details h2,
+.contact-form label,
+.article-copy time,
+.simple-page-content span {
+  font-family: var(--tbs-display-font) !important;
+  font-weight: 900;
+  letter-spacing: var(--tbs-label-spacing) !important;
+  text-transform: uppercase;
+}
+
+.home-copy h1,
+.home-carousel-copy h2,
+.work-content h1,
+.journal-hero h1,
+.article-copy h1,
+.project-copy h1,
+.contact-left h1,
+.menu-page-nav b,
+.menu-page-footer h2,
+.contact-footer h2,
+.simple-page-content h1,
+.site-footer-logo,
+.scroll-timeline-intro h2,
+.scroll-timeline-copy h3 {
+  font-family: var(--tbs-display-font) !important;
+  font-weight: 900;
+  letter-spacing: var(--tbs-display-spacing) !important;
+  text-transform: uppercase;
+}
+
+.work-content h1,
+.journal-hero h1,
+.article-copy h1,
+.project-copy h1,
+.contact-left h1,
+.simple-page-content h1,
+.scroll-timeline-intro h2 {
+  line-height: .86 !important;
+}
+
+.menu-page-nav b {
+  letter-spacing: -.006em !important;
+  line-height: .82 !important;
+}
+
+.article-copy h1,
+.contact-left h1,
+.contact-footer h2,
+.menu-page-footer h2 {
+  transform: none !important;
+  width: auto !important;
+}
+
+.home-intro,
+.home-carousel-body,
+.work-content p,
+.journal-copy p,
+.article-intro,
+.article-columns p,
+.project-copy p,
+.contact-intro,
+.contact-details p,
+.contact-footer p,
+.menu-page-columns p,
+.menu-page-footer p,
+.simple-page-content p,
+.site-footer-tagline,
+.scroll-timeline-copy p {
+  font-family: var(--tbs-text-font) !important;
+  letter-spacing: -.005em !important;
+  text-transform: none;
+}
+
+@media (max-width: 900px) {
+  .work-content h1,
+  .journal-hero h1,
+  .article-copy h1,
+  .project-copy h1,
+  .contact-left h1,
+  .simple-page-content h1,
+  .scroll-timeline-intro h2 {
+    letter-spacing: -.006em !important;
+  }
+  .menu-page-nav b {
+    letter-spacing: 0 !important;
+  }
+}
+
+/* Final site-wide typography coverage for every page/subpage. */
+.journal-side h1,
+.project-info h1,
+.project-info h2,
+.work-stats strong,
+.work-card h2,
+.journal-row h2,
+.project-view,
+.project-nav,
+.project-meta,
+.project-tags span,
+.article-nav,
+.article-share,
+.journal-back,
+.journal-tabs,
+.work-filters,
+.contact-back {
+  font-family: var(--tbs-display-font) !important;
+  font-weight: 900 !important;
+  letter-spacing: var(--tbs-label-spacing) !important;
+  text-transform: uppercase;
+}
+
+.journal-side h1,
+.project-info h1,
+.work-card h2,
+.journal-row h2,
+.work-stats strong {
+  letter-spacing: var(--tbs-display-spacing) !important;
+  line-height: .86 !important;
+}
+
+.project-desc,
+.project-info section p,
+.journal-row p,
+.work-caption p {
+  font-family: var(--tbs-text-font) !important;
+  letter-spacing: -.005em !important;
+  text-transform: none !important;
+}
+
+@media (max-width: 900px) {
+  .journal-side h1,
+  .project-info h1,
+  .work-card h2,
+  .journal-row h2,
+  .work-stats strong {
+    letter-spacing: -.006em !important;
+  }
+}
+
+/* Condensed-but-readable refinement: keep the impact face, open the letters, compress the display block visually. */
+:root {
+  --tbs-display-spacing: .012em;
+  --tbs-label-spacing: .04em;
+}
+
+.home-copy h1,
+.home-carousel-copy h2,
+.work-content h1,
+.journal-side h1,
+.article-copy h1,
+.project-info h1,
+.contact-left h1,
+.menu-page-nav b,
+.menu-page-footer h2,
+.contact-footer h2,
+.simple-page-content h1,
+.site-footer-logo,
+.scroll-timeline-intro h2,
+.scroll-timeline-copy h3,
+.work-card h2,
+.journal-row h2,
+.work-stats strong {
+  display: inline-block;
+  transform: scaleX(.86) !important;
+  transform-origin: left top !important;
+  letter-spacing: var(--tbs-display-spacing) !important;
+}
+
+.home-copy h1,
+.home-carousel-copy h2,
+.menu-page-nav b {
+  transform: scaleX(.82) !important;
+}
+
+@media (max-width: 900px) {
+  .work-filters {
+    flex-wrap: wrap !important;
+    overflow-x: visible !important;
+    white-space: normal !important;
+    row-gap: 10px !important;
+  }
+  .journal-row {
+    grid-template-columns: 104px minmax(0, 1fr) 18px !important;
+    gap: 12px !important;
+  }
+  .journal-row img { width: 104px !important; }
+  .journal-row h2 {
+    font-size: clamp(19px, 6vw, 25px) !important;
+    max-width: 100% !important;
+  }
+  .project-info h1 { margin-bottom: 18px !important; }
+  .project-meta { margin-top: 0 !important; }
+}
+
+@media (max-width: 900px) {
+  .article-copy h1 {
+    font-size: clamp(40px, 11.5vw, 46px) !important;
+    transform: scaleX(.78) !important;
+    max-width: 100% !important;
+  }
+  .journal-tabs > a:last-child {
+    display: none !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .article-copy h1 {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    white-space: normal !important;
+    line-height: .88 !important;
+    font-size: clamp(38px, 10.5vw, 43px) !important;
+    transform: scaleX(.84) !important;
+    margin-bottom: 20px !important;
+  }
+  .article-columns {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  .article-intro { margin-top: 24px !important; }
+}
+
+/* Work cards: use real readable captions instead of relying on cropped image typography. */
+.work-number.sr-only,
+.work-caption.sr-only {
+  position: absolute !important;
+  width: auto !important;
+  height: auto !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: visible !important;
+  clip: auto !important;
+  clip-path: none !important;
+  white-space: normal !important;
+  border: 0 !important;
+}
+.work-number.sr-only {
+  z-index: 3;
+  top: 15px;
+  left: 15px;
+  color: #f3f3f1;
+  font-family: var(--tbs-display-font) !important;
+  font-size: 14px;
+  letter-spacing: var(--tbs-label-spacing) !important;
+}
+.work-caption.sr-only {
+  z-index: 3;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  color: #f3f3f1;
+  text-transform: uppercase;
+}
+.work-caption.sr-only h2 {
+  font-family: var(--tbs-display-font) !important;
+  font-size: clamp(24px, 3vw, 34px);
+  line-height: .86;
+  letter-spacing: var(--tbs-display-spacing) !important;
+  transform: scaleX(.86) !important;
+  transform-origin: left bottom !important;
+}
+.work-caption.sr-only p {
+  font-family: var(--tbs-display-font) !important;
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: var(--tbs-label-spacing) !important;
+  margin-top: 8px;
+  text-transform: uppercase !important;
+}
+
+/* Keep structured work captions visible only on mobile, where image typography was cropped. */
+@media (min-width: 901px) {
+  .work-number.sr-only,
+  .work-caption.sr-only {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    clip-path: inset(50%) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+  }
+}
