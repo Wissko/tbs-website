@@ -21,18 +21,17 @@ export default function Home() {
         <div className="home-hero">
           <div className="home-copy">
             <h1>
-              WE<br />
-              SHAPE<br />
-              WHAT<br />
-              PEOPLE<br />
-              REMEMBER.
+              BUILT<br />
+              TO<br />
+              BE<br />
+              SEEN.
             </h1>
             <p className="home-intro">
-              A digital creative studio partnering<br />
-              with visionary brands and entrepreneurs<br />
-              to design the future. Let&apos;s build it.
+              We build premium digital systems<br />
+              that make businesses easier to trust,<br />
+              easier to contact, and easier to choose.
             </p>
-            <a className="home-cta" href="/work">VIEW OUR WORK <span>→</span></a>
+            <a className="home-cta" href="/work">EXPLORE SYSTEMS <span>→</span></a>
           </div>
 
           <figure className="home-image" aria-label="TBS editorial hero image">
@@ -61,7 +60,7 @@ export default function Home() {
         </div>
 
         <footer className="home-footer">
-          <p>TBS® HQ<br />PARIS, FRANCE</p>
+          <p>TBS®</p>
           <p>ALWAYS × 24.365° C</p>
         </footer>
       </section>

@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "TBS° — We shape what people remember",
-  description: "Editorial black and white creative studio website concept for TBS.",
+  description: "Premium digital systems for websites, wallet loyalty, bookings, and client follow-up.",
   icons: {
     icon: "/icon.svg",
     shortcut: "/icon.svg",

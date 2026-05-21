@@ -5,32 +5,32 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 const slides = [
   {
-    eyebrow: "01 / BRAND SYSTEMS",
-    title: "IDENTITIES THAT MOVE BEFORE THEY SPEAK.",
-    body: "Strategic visual worlds built for launches, rituals and memorable digital presence.",
+    eyebrow: "01 / WEBSITE CREATION",
+    title: "PREMIUM WEBSITES THAT CREATE TRUST.",
+    body: "Fast, polished websites built to make the first impression stronger and move visitors toward a clear enquiry.",
     image: "/images/uploads/tbs-photo-02.jpg",
-    alt: "Editorial monochrome portrait for brand systems",
+    alt: "Editorial monochrome portrait for premium website creation",
   },
   {
-    eyebrow: "02 / DIGITAL EXPERIENCES",
-    title: "SCROLLS THAT FEEL LIKE CINEMA.",
-    body: "Interfaces with rhythm, tension and clarity — designed to be felt, not just visited.",
+    eyebrow: "02 / WALLET LOYALTY",
+    title: "RETENTION THAT LIVES IN THE WALLET.",
+    body: "Apple and Google Wallet loyalty systems that track visits, manage rewards, and bring customers back.",
     image: "/images/uploads/tbs-photo-04.jpg",
-    alt: "Abstract dark editorial image for digital experiences",
+    alt: "Abstract dark editorial image for wallet loyalty systems",
   },
   {
-    eyebrow: "03 / CONTENT DIRECTION",
-    title: "CAMPAIGNS BUILT AROUND THE AFTERIMAGE.",
-    body: "Art direction, motion cues and social assets that keep the story alive after the click.",
+    eyebrow: "03 / AUTOMATED BOOKINGS",
+    title: "BOOKING FLOWS WITHOUT THE FRICTION.",
+    body: "Cleaner scheduling experiences designed to reduce back and forth, no-shows, and daily admin drag.",
     image: "/images/uploads/tbs-photo-06.jpg",
-    alt: "Editorial visual for content direction",
+    alt: "Editorial visual for automated booking systems",
   },
   {
-    eyebrow: "04 / LAUNCH MOMENTS",
-    title: "HIGH-CONTRAST MOMENTS FOR BOLD RELEASES.",
-    body: "From concept to conversion, we shape the system around the one scene people remember.",
+    eyebrow: "04 / CLIENT FOLLOW-UP",
+    title: "FOLLOW-UP THAT BRINGS PEOPLE BACK.",
+    body: "CRM journeys, reminders, and review requests that turn one-time clients into repeat business.",
     image: "/images/uploads/tbs-photo-08.jpg",
-    alt: "Monochrome image for launch moments",
+    alt: "Monochrome image for client follow-up systems",
   },
 ];
 
@@ -106,7 +106,7 @@ export default function HomeExperienceCarousel() {
   return (
     <section className="home-carousel-section" aria-labelledby="home-carousel-title">
       <div className="home-carousel-meta">
-        <span>TBS° FIELD NOTES</span>
+        <span>SELECTED SYSTEMS</span>
         <span>SWIPE / DRAG</span>
       </div>
 
