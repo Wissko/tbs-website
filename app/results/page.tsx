@@ -8,7 +8,7 @@ function Header() {
     <header className="results-reference-header">
       <Link className="results-reference-brand" href="/">TBS°</Link>
       <p>Premium Business Systems<br />Website · Wallet Loyalty<br />Booking · Follow-Up</p>
-      <Link className="results-reference-menu" href="/menu">[ Menu ] <span>+</span></Link>
+      <Link className="results-reference-menu" href="/menu">( MENU ) <span>+</span></Link>
     </header>
   );
 }

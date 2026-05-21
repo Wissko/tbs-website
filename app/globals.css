@@ -3993,3 +3993,265 @@ html, body { overflow-x: hidden; }
     letter-spacing: -.006em !important;
   }
 }
+
+/* Unified global header system: same TBS/text/menu placement on every page. */
+.home-header,
+.work-header,
+.project-header,
+.article-header,
+.contact-header,
+.simple-page-header,
+.results-reference-header,
+.menu-page-header {
+  position: absolute !important;
+  left: 40px !important;
+  right: 40px !important;
+  top: 30px !important;
+  z-index: 60 !important;
+  display: grid !important;
+  grid-template-columns: auto minmax(190px, 1fr) auto !important;
+  align-items: start !important;
+  gap: 22px !important;
+  padding: 0 !important;
+  text-transform: uppercase !important;
+}
+.home-brand,
+.work-brand,
+.project-brand,
+.article-brand,
+.contact-brand,
+.simple-page-brand,
+.results-reference-brand,
+.menu-page-brand {
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 31px !important;
+  line-height: .86 !important;
+  font-weight: 900 !important;
+  letter-spacing: -.075em !important;
+  color: inherit !important;
+}
+.home-kicker,
+.work-kicker,
+.project-kicker,
+.article-kicker,
+.contact-kicker,
+.simple-page-header p,
+.results-reference-header p,
+.menu-page-header p {
+  display: block !important;
+  margin: 2px 0 0 !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 10px !important;
+  line-height: 1.16 !important;
+  font-weight: 800 !important;
+  letter-spacing: .035em !important;
+  color: inherit !important;
+}
+.home-menu,
+.work-menu,
+.project-menu,
+.article-menu,
+.contact-menu,
+.simple-page-menu,
+.results-reference-menu,
+.menu-page-close {
+  justify-self: end !important;
+  display: inline-flex !important;
+  align-items: flex-start !important;
+  gap: 18px !important;
+  margin: 7px 0 0 !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 12px !important;
+  line-height: 1 !important;
+  font-weight: 900 !important;
+  letter-spacing: .02em !important;
+  color: inherit !important;
+  text-transform: uppercase !important;
+  white-space: nowrap !important;
+}
+.home-menu span,
+.work-menu span,
+.project-menu span,
+.article-menu span,
+.contact-menu span,
+.simple-page-menu span,
+.results-reference-menu span,
+.menu-page-close span {
+  font-size: 22px !important;
+  font-weight: 300 !important;
+  line-height: .65 !important;
+}
+.home-plus-top,
+.work-plus,
+.project-plus,
+.article-plus,
+.contact-plus,
+.journal-plus {
+  display: none !important;
+}
+.home-canvas,
+.work-canvas,
+.project-canvas,
+.article-canvas,
+.contact-canvas,
+.results-reference-page,
+.results-reference-canvas {
+  color: #050505 !important;
+}
+.menu-page-canvas,
+.simple-page-canvas {
+  color: #f3f3f1 !important;
+}
+.results-reference-canvas {
+  position: relative !important;
+  padding-top: 126px !important;
+}
+.menu-page-canvas {
+  position: relative !important;
+}
+@media (max-width: 900px) {
+  .home-header,
+  .work-header,
+  .project-header,
+  .article-header,
+  .contact-header,
+  .simple-page-header,
+  .results-reference-header,
+  .menu-page-header {
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    grid-template-columns: auto minmax(120px, 1fr) auto !important;
+    gap: 14px !important;
+    padding: 22px 20px 0 !important;
+  }
+  .home-brand,
+  .work-brand,
+  .project-brand,
+  .article-brand,
+  .contact-brand,
+  .simple-page-brand,
+  .results-reference-brand,
+  .menu-page-brand {
+    font-size: 30px !important;
+  }
+  .home-kicker,
+  .work-kicker,
+  .project-kicker,
+  .article-kicker,
+  .contact-kicker,
+  .simple-page-header p,
+  .results-reference-header p,
+  .menu-page-header p {
+    display: block !important;
+    font-size: 8.5px !important;
+    line-height: 1.12 !important;
+  }
+  .home-menu,
+  .work-menu,
+  .project-menu,
+  .article-menu,
+  .contact-menu,
+  .simple-page-menu,
+  .results-reference-menu,
+  .menu-page-close {
+    font-size: 11px !important;
+    gap: 12px !important;
+    margin-top: 7px !important;
+  }
+  .results-reference-canvas {
+    padding-top: 0 !important;
+  }
+}
+@media (max-width: 430px) {
+  .home-kicker,
+  .work-kicker,
+  .project-kicker,
+  .article-kicker,
+  .contact-kicker,
+  .simple-page-header p,
+  .results-reference-header p,
+  .menu-page-header p {
+    max-width: 150px;
+  }
+}
+
+/* Header consistency final corrections for padded/mobile pages. */
+.about-hero-header {
+  min-height: 0 !important;
+  border-bottom: 0 !important;
+}
+.result-detail-shell {
+  padding: 0 !important;
+}
+@media (max-width: 900px) {
+  .home-header,
+  .work-header,
+  .project-header,
+  .article-header,
+  .contact-header,
+  .simple-page-header,
+  .results-reference-header,
+  .menu-page-header,
+  .result-detail-header,
+  .about-hero-header {
+    position: absolute !important;
+    left: 20px !important;
+    right: 20px !important;
+    top: 22px !important;
+    padding: 0 !important;
+    width: auto !important;
+  }
+  .project-header,
+  .article-header,
+  .contact-header,
+  .simple-page-header,
+  .menu-page-header,
+  .result-detail-header,
+  .about-hero-header {
+    grid-template-columns: auto minmax(120px, 1fr) auto !important;
+  }
+  .about-hero-header p,
+  .simple-page-header p,
+  .article-kicker,
+  .contact-kicker,
+  .project-kicker,
+  .work-kicker,
+  .home-kicker,
+  .results-reference-header p,
+  .menu-page-header p {
+    display: block !important;
+  }
+  .results-reference-canvas {
+    padding-top: 96px !important;
+  }
+}
+
+/* Header consistency patch: force brand width/font even inside page-specific link rules. */
+.results-reference-header .results-reference-brand,
+.menu-page-header .menu-page-brand,
+.about-hero-header .simple-page-brand {
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 31px !important;
+  line-height: .86 !important;
+  font-weight: 900 !important;
+  letter-spacing: -.075em !important;
+  transform: none !important;
+}
+@media (max-width: 900px) {
+  .results-reference-header .results-reference-brand,
+  .menu-page-header .menu-page-brand,
+  .about-hero-header .simple-page-brand {
+    font-size: 30px !important;
+  }
+  .menu-page-canvas {
+    overflow-y: auto !important;
+    padding-bottom: 54px !important;
+  }
+  .services-title-art {
+    overflow: visible !important;
+    border: 0 !important;
+    background: transparent !important;
+  }
+}

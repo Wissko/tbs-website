@@ -10,7 +10,7 @@ export default function AboutPage() {
         <header className="simple-page-header about-hero-header">
           <Link className="simple-page-brand" href="/">TBS°</Link>
           <p>Digital Creative Studio<br />Building Bold Experiences<br />And Brands.</p>
-          <Link className="simple-page-menu" href="/menu">[ MENU ] <span>+</span></Link>
+          <Link className="simple-page-menu" href="/menu">( MENU ) <span>+</span></Link>
         </header>
 
         <div className="about-hero-content">
