@@ -15,7 +15,12 @@ export default function SiteFooter() {
           </p>
         </div>
 
-        <div className="site-footer-star" aria-hidden="true">✳</div>
+        <div className="site-footer-star" aria-hidden="true">
+          <span />
+          <span />
+          <span />
+          <span />
+        </div>
 
         <figure className="site-footer-sphere" aria-hidden="true">
           <Image
