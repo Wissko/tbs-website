@@ -20,11 +20,16 @@ export default function Home() {
 
         <div className="home-hero">
           <div className="home-copy">
-            <h1 className="home-editorial-title">
-              <span>BUILT</span>
-              <span>TO BE</span>
-              <span>SEEN.</span>
-            </h1>
+            <h1 className="home-title-a11y">BUILT TO BE SEEN.</h1>
+            <figure className="home-title-art" aria-hidden="true">
+              <Image
+                src="/images/uploads/home-title-design.png"
+                alt=""
+                fill
+                priority
+                sizes="(max-width: 560px) 92vw, 540px"
+              />
+            </figure>
             <p className="home-intro">
               We build premium digital systems<br />
               that make businesses easier to trust,<br />

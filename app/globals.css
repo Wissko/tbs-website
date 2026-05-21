@@ -2603,3 +2603,45 @@ html, body { overflow-x: hidden; }
     letter-spacing: .08em !important;
   }
 }
+
+/* Custom uploaded title artwork replaces the typed home headline. */
+.home-title-a11y {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+.home-title-art {
+  position: relative;
+  width: min(540px, 42vw);
+  aspect-ratio: 915 / 770;
+  margin: 0;
+  filter: contrast(1.08);
+}
+.home-title-art img { object-fit: contain; }
+
+@media (max-width: 560px) {
+  .home-copy::before,
+  .home-copy::after { content: none !important; }
+  .home-copy {
+    top: 94px !important;
+    left: 18px !important;
+    width: calc(100% - 36px) !important;
+  }
+  .home-title-art {
+    width: min(94vw, 360px);
+    max-width: 100%;
+  }
+  .home-intro {
+    margin-top: 22px !important;
+    border-top: 0 !important;
+    padding-top: 0 !important;
+    text-transform: none !important;
+  }
+}
