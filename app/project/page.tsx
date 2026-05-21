@@ -7,7 +7,7 @@ function Header() {
       <Link className="project-brand" href="/">TBS°</Link>
       <p className="project-kicker">Digital Creative Studio<br />Building Bold Experiences<br />And Brands.</p>
       <span className="project-plus">+</span>
-      <a className="project-menu" href="/menu">( MENU ) <span>+</span></a>
+      <Link className="project-menu" href="/menu">( MENU ) <span>+</span></Link>
     </header>
   );
 }

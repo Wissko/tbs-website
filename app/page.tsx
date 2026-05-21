@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import SiteFooter from "../components/SiteFooter";
 
 export default function Home() {
@@ -13,7 +14,7 @@ export default function Home() {
             And Brands.
           </p>
           <span className="home-plus home-plus-top">+</span>
-          <a className="home-menu" href="/menu">( MENU ) <span>+</span></a>
+          <Link className="home-menu" href="/menu">( MENU ) <span>+</span></Link>
         </header>
 
         <div className="home-hero">

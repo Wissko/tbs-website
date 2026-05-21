@@ -1115,3 +1115,74 @@ a { color: inherit; text-decoration: none; }
 .simple-page-content p { margin: 0; max-width: 510px; font-family: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 1.55; font-weight: 800; letter-spacing: .01em; }
 .simple-page-back { display: inline-flex; margin-top: 34px; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: 900; letter-spacing: .035em; }
 @media(max-width:900px){.simple-page-shell{padding:0}.simple-page-canvas{width:100%;min-height:100vh;aspect-ratio:auto;border:0}.simple-page-header{padding:22px 20px 0;grid-template-columns:auto 1fr auto}.simple-page-header p{display:none}.simple-page-content{left:20px;right:20px;bottom:42px}.simple-page-content h1{font-size:clamp(54px,17vw,96px)}}
+
+@keyframes menuCanvasIn {
+  from { opacity: 0; transform: translateY(18px) scale(.992); filter: blur(6px); }
+  to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+@keyframes menuItemIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.menu-page-canvas {
+  animation: menuCanvasIn .72s cubic-bezier(.16,1,.3,1) both;
+}
+.menu-page-header,
+.menu-page-side,
+.menu-page-footer {
+  animation: menuItemIn .68s cubic-bezier(.16,1,.3,1) both;
+}
+.menu-page-header { animation-delay: .04s; }
+.menu-page-side { animation-delay: .14s; }
+.menu-page-footer { animation-delay: .2s; }
+.menu-page-nav a {
+  opacity: 0;
+  animation: menuItemIn .62s cubic-bezier(.16,1,.3,1) both;
+  transition: padding-left .28s ease, color .28s ease, background .28s ease;
+}
+.menu-page-nav a:nth-child(1) { animation-delay: .08s; }
+.menu-page-nav a:nth-child(2) { animation-delay: .13s; }
+.menu-page-nav a:nth-child(3) { animation-delay: .18s; }
+.menu-page-nav a:nth-child(4) { animation-delay: .23s; }
+.menu-page-nav a:nth-child(5) { animation-delay: .28s; }
+.menu-page-nav a:nth-child(6) { animation-delay: .33s; }
+.menu-page-nav a:hover {
+  padding-left: 14px;
+  background: rgba(255,255,255,.035);
+}
+.menu-page-close,
+.home-menu,
+.work-menu,
+.journal-menu,
+.article-menu,
+.project-menu,
+.contact-menu,
+.simple-page-menu {
+  cursor: pointer;
+  transition: opacity .22s ease, transform .22s ease;
+}
+.menu-page-close:hover,
+.home-menu:hover,
+.work-menu:hover,
+.journal-menu:hover,
+.article-menu:hover,
+.project-menu:hover,
+.contact-menu:hover,
+.simple-page-menu:hover {
+  opacity: .68;
+  transform: translateY(-1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-page-canvas,
+  .menu-page-header,
+  .menu-page-side,
+  .menu-page-footer,
+  .menu-page-nav a {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
