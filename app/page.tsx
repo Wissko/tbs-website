@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import HomeExperienceCarousel from "../components/HomeExperienceCarousel";
 import SiteFooter from "../components/SiteFooter";
 
 export default function Home() {
@@ -64,6 +65,7 @@ export default function Home() {
           <p>ALWAYS × 24.365° C</p>
         </footer>
       </section>
+      <HomeExperienceCarousel />
       <SiteFooter />
     </main>
   );
