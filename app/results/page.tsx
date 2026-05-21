@@ -32,10 +32,10 @@ export default function ResultsPage() {
             <h1 id="results-title" className="results-title-a11y">RESULTS</h1>
             <figure className="results-reference-title-art" aria-hidden="true">
               <Image
-                src="/images/uploads/results-title-art.png"
+                src="/images/uploads/results-title-art-transparent.png"
                 alt=""
-                width={1774}
-                height={887}
+                width={1280}
+                height={640}
                 priority
                 sizes="(max-width: 900px) 92vw, 760px"
               />
