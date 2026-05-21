@@ -2918,3 +2918,83 @@ html, body { overflow-x: hidden; }
   }
   .menu-page-side-v2 { margin-top: 42px !important; }
 }
+
+/* Uploaded SERVICES artwork in menu. */
+.menu-services-art-label {
+  position: relative !important;
+  display: block !important;
+  width: min(360px, 34vw) !important;
+  height: 78px !important;
+  transform: none !important;
+  overflow: visible;
+}
+.menu-services-art-label img {
+  object-fit: contain;
+  object-position: left center;
+  filter: brightness(1.75) contrast(1.45) saturate(1.18);
+}
+@media (max-width: 900px) {
+  .menu-services-art-label {
+    width: min(245px, 64vw) !important;
+    height: 58px !important;
+  }
+}
+
+/* Make SERVICES artwork large enough to read. */
+.menu-services-art-label {
+  width: min(420px, 38vw) !important;
+  height: 110px !important;
+  margin-block: -10px !important;
+}
+.menu-services-art-label img {
+  filter: brightness(1.45) contrast(1.65) saturate(1.25) !important;
+}
+.menu-page-nav-v2 a:has(.menu-services-art-label) {
+  min-height: 112px;
+}
+@media (max-width: 900px) {
+  .menu-services-art-label {
+    width: min(270px, 68vw) !important;
+    height: 96px !important;
+    margin-block: -8px !important;
+  }
+  .menu-page-nav-v2 a:has(.menu-services-art-label) {
+    min-height: 104px;
+  }
+}
+
+/* SERVICES image texture clipped into readable menu type. */
+.menu-services-art-label {
+  position: static !important;
+  display: inline-block !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+  font-family: var(--tbs-display-font) !important;
+  font-size: 72px !important;
+  line-height: .82 !important;
+  letter-spacing: .012em !important;
+  color: transparent !important;
+  background-image: url('/images/uploads/menu-services-art.png');
+  background-size: 140% 180%;
+  background-position: center;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-stroke: .55px rgba(243,243,241,.72);
+  text-shadow: 0 0 10px rgba(209, 255, 63, .22);
+  transform: scaleX(.82) !important;
+  transform-origin: left center !important;
+}
+.menu-page-nav-v2 a:has(.menu-services-art-label) {
+  min-height: 86px;
+}
+@media (max-width: 900px) {
+  .menu-services-art-label {
+    font-size: clamp(46px, 14vw, 68px) !important;
+    line-height: .82 !important;
+    white-space: nowrap;
+  }
+  .menu-page-nav-v2 a:has(.menu-services-art-label) {
+    min-height: 72px;
+  }
+}

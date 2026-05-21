@@ -25,7 +25,7 @@ export default function MenuPage() {
           {primaryLinks.map((link, index) => (
             <Link href={link.href} className={link.cta ? "menu-page-primary-cta" : undefined} key={link.label}>
               <span>[{String(index + 1).padStart(2, "0")}]</span>
-              <b>{link.label}</b>
+              <b className={link.label === "SERVICES" ? "menu-services-art-label" : undefined}>{link.label}</b>
               <em>→</em>
             </Link>
           ))}
