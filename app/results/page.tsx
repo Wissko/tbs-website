@@ -8,13 +8,6 @@ function Header() {
     <header className="results-reference-header">
       <Link className="results-reference-brand" href="/">TBS°</Link>
       <p>Premium Business Systems<br />Website · Wallet Loyalty<br />Booking · Follow-Up</p>
-      <nav aria-label="Results sections">
-        <a href="#outcomes">Outcome</a>
-        <a href="#trust">Trust</a>
-        <a href="#speed">Speed</a>
-        <a href="#retention">Retention</a>
-      </nav>
-      <Link className="results-reference-services" href="/work">View services →</Link>
       <Link className="results-reference-menu" href="/menu">[ Menu ] <span>+</span></Link>
     </header>
   );
@@ -41,6 +34,13 @@ export default function ResultsPage() {
               />
             </figure>
             <p>We remove the digital weak points that quietly cost businesses revenue: weak trust, slow response, manual booking loops, and absent follow-up.</p>
+            <nav className="results-reference-section-nav" aria-label="Results sections">
+              <a href="#outcomes">Outcome</a>
+              <a href="#trust">Trust</a>
+              <a href="#speed">Speed</a>
+              <a href="#retention">Retention</a>
+              <Link href="/work">View services →</Link>
+            </nav>
           </div>
           <div className="results-reference-seal" aria-hidden="true">
             <span>Premium systems · measurable outcomes ·</span>
