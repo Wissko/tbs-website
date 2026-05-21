@@ -4583,3 +4583,107 @@ html, body { overflow-x: hidden; }
     transform: none !important;
   }
 }
+
+/* Orb logo replacement: use TO BE SEEN mark instead of text TBS° in every page header. */
+.home-brand,
+.work-brand,
+.project-brand,
+.article-brand,
+.contact-brand,
+.simple-page-brand,
+.results-reference-brand,
+.menu-page-brand {
+  display: block !important;
+  width: 76px !important;
+  height: 76px !important;
+  min-width: 76px !important;
+  overflow: hidden !important;
+  text-indent: -9999px !important;
+  white-space: nowrap !important;
+  color: transparent !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  background-image: url('/images/uploads/to-be-seen-orb-logo.png') !important;
+  background-repeat: no-repeat !important;
+  background-position: left top !important;
+  background-size: contain !important;
+  transform: none !important;
+}
+.menu-page-brand,
+.simple-page-brand,
+.about-hero-header .simple-page-brand,
+.service-header .simple-page-brand {
+  background-image: url('/images/uploads/to-be-seen-orb-logo-dark.png') !important;
+}
+.home-header,
+.work-header,
+.project-header,
+.article-header,
+.contact-header,
+.simple-page-header,
+.results-reference-header,
+.menu-page-header {
+  align-items: start !important;
+}
+.home-kicker,
+.work-kicker,
+.project-kicker,
+.article-kicker,
+.contact-kicker,
+.simple-page-header p,
+.results-reference-header p,
+.menu-page-header p {
+  margin-top: 6px !important;
+}
+.home-menu,
+.work-menu,
+.project-menu,
+.article-menu,
+.contact-menu,
+.simple-page-menu,
+.results-reference-menu,
+.menu-page-close {
+  margin-top: 10px !important;
+}
+@media (max-width: 900px) {
+  .home-brand,
+  .work-brand,
+  .project-brand,
+  .article-brand,
+  .contact-brand,
+  .simple-page-brand,
+  .results-reference-brand,
+  .menu-page-brand {
+    width: 60px !important;
+    height: 60px !important;
+    min-width: 60px !important;
+  }
+  .home-kicker,
+  .work-kicker,
+  .project-kicker,
+  .article-kicker,
+  .contact-kicker,
+  .simple-page-header p,
+  .results-reference-header p,
+  .menu-page-header p {
+    margin-top: 4px !important;
+  }
+  .home-menu,
+  .work-menu,
+  .project-menu,
+  .article-menu,
+  .contact-menu,
+  .simple-page-menu,
+  .results-reference-menu,
+  .menu-page-close {
+    margin-top: 7px !important;
+  }
+}
+
+/* Keep menu overlay header aligned with the global page header despite menu content padding. */
+@media (min-width: 901px) {
+  .menu-page-canvas-v2 .menu-page-header {
+    left: 0 !important;
+    right: 0 !important;
+  }
+}
