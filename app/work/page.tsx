@@ -15,7 +15,7 @@ function Header() {
       <Link className="work-brand" href="/">TBS°</Link>
       <p className="work-kicker">Digital Creative Studio<br />Building Bold Experiences<br />And Brands.</p>
       <span className="work-plus">+</span>
-      <a className="work-menu" href="#menu">( MENU ) <span>+</span></a>
+      <a className="work-menu" href="/menu">( MENU ) <span>+</span></a>
     </header>
   );
 }

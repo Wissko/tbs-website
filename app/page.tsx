@@ -13,7 +13,7 @@ export default function Home() {
             And Brands.
           </p>
           <span className="home-plus home-plus-top">+</span>
-          <a className="home-menu" href="#menu">( MENU ) <span>+</span></a>
+          <a className="home-menu" href="/menu">( MENU ) <span>+</span></a>
         </header>
 
         <div className="home-hero">
