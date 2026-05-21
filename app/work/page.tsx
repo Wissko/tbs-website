@@ -1,14 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import SiteFooter from "../../components/SiteFooter";
-
-const works = [
-  { n: "01", title: "MAISON NOIR", type: "WEBSITE", src: "/mockups/work-card-01.jpg", className: "work-card small" },
-  { n: "02", title: "NEXUS AI", type: "BRANDING", src: "/mockups/work-card-02.jpg", className: "work-card small" },
-  { n: "03", title: "DUPONT", type: "CAMPAIGN", src: "/mockups/work-card-03.jpg", className: "work-card tall" },
-  { n: "04", title: "VANTA", type: "BRANDING", src: "/mockups/work-card-04.jpg", className: "work-card small" },
-  { n: "05", title: "ALPHA SOURCE", type: "EXPERIENCE", src: "/mockups/work-card-05.jpg", className: "work-card small" },
-];
+import { services } from "../../lib/services";
 
 function Header() {
   return (
@@ -27,35 +19,34 @@ export default function WorkPage() {
       <section className="work-canvas">
         <Header />
 
-        <section className="work-content" aria-label="All works">
-          <h1>ALL WORKS</h1>
-          <nav className="work-filters" aria-label="Work filters">
-            <a className="active" href="#all">ALL</a>
-            <a href="#branding">BRANDING</a>
-            <a href="#websites">WEBSITES</a>
-            <a href="#campaigns">CAMPAIGNS</a>
-            <a href="#systems">SYSTEMS</a>
-            <a href="#digital-products">DIGITAL PRODUCTS</a>
+        <section className="work-content work-services-content" aria-label="TBS services">
+          <h1>SERVICES</h1>
+          <nav className="work-filters" aria-label="Service filters">
+            <a className="active" href="#core-offers">CORE OFFERS</a>
+            <a href="#visibility">VISIBILITY</a>
+            <a href="#retention">RETENTION</a>
+            <a href="#scheduling">SCHEDULING</a>
+            <a href="#crm">CRM</a>
+            <a href="#bundle">BUNDLE</a>
           </nav>
 
-          <div className="work-grid">
-            {works.map((work) => (
-              <article className={work.className} key={work.n}>
-                <Image src={work.src} alt={`${work.title} ${work.type}`} fill sizes="(max-width: 900px) 100vw, 32vw" />
-                <span className="work-number sr-only">[{work.n}]</span>
-                <div className="work-caption sr-only">
-                  <h2>{work.title}</h2>
-                  <p>{work.type}</p>
-                </div>
-              </article>
+          <div className="work-grid work-services-grid" id="core-offers">
+            {services.map((service) => (
+              <Link className="work-service-card" href={`/services/${service.slug}`} key={service.slug}>
+                <span className="work-service-number">{service.n}</span>
+                <span className="work-service-label">{service.label}</span>
+                <h2>{service.title}</h2>
+                <p>{service.short}</p>
+                <b>VIEW SERVICE <span>→</span></b>
+              </Link>
             ))}
           </div>
 
-          <footer className="work-stats">
-            <div><strong>+48</strong><span>PROJECTS</span></div>
-            <div><strong>+21</strong><span>CLIENTS</span></div>
-            <div><strong>07</strong><span>COUNTRIES</span></div>
-            <a href="#load">VIEW LOAD MORE <span>→</span></a>
+          <footer className="work-stats work-services-stats">
+            <div><strong>06</strong><span>CORE OFFERS</span></div>
+            <div><strong>01</strong><span>COHERENT SYSTEM</span></div>
+            <div><strong>24</strong><span>HOUR STRUCTURE</span></div>
+            <Link href="/contact">BOOK A CALL <span>→</span></Link>
           </footer>
         </section>
       </section>
