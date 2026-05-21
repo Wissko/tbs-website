@@ -40,6 +40,21 @@ export default function HomeExperienceCarousel() {
 
   const activeSlide = slides[active];
 
+  const scrollToSlide = useCallback((index: number) => {
+    const track = trackRef.current;
+    const card = track?.querySelectorAll<HTMLElement>("[data-carousel-card]")[index];
+    if (!track || !card) return;
+
+    track.scrollTo({
+      left: card.offsetLeft - (track.clientWidth - card.offsetWidth) / 2,
+      behavior: "smooth",
+    });
+    setActive(index);
+  }, []);
+
+  const goToPrevious = () => scrollToSlide((active - 1 + slides.length) % slides.length);
+  const goToNext = () => scrollToSlide((active + 1) % slides.length);
+
   const updateActiveSlide = useCallback(() => {
     const track = trackRef.current;
     if (!track) return;
@@ -79,6 +94,11 @@ export default function HomeExperienceCarousel() {
         <p key={`${active}-body`} className="home-carousel-body">
           {activeSlide.body}
         </p>
+      </div>
+
+      <div className="home-carousel-controls" aria-label="Carousel controls">
+        <button type="button" onClick={goToPrevious} aria-label="Previous slide">←</button>
+        <button type="button" onClick={goToNext} aria-label="Next slide">→</button>
       </div>
 
       <div
