@@ -4890,3 +4890,207 @@ html, body { overflow-x: hidden; }
     padding: 0 !important;
   }
 }
+
+/* Contact readability pass: keep the page complete, balanced and legible on all screens. */
+.contact-shell .contact-canvas {
+  min-height: 100vh !important;
+  padding-bottom: 56px !important;
+}
+.contact-shell .contact-left {
+  top: clamp(136px, 13.5vh, 154px) !important;
+  width: min(46vw, 600px) !important;
+}
+.contact-shell .contact-title-art {
+  width: min(520px, 42vw) !important;
+  margin-bottom: 24px !important;
+}
+.contact-shell .contact-intro {
+  margin: 22px 0 24px !important;
+  max-width: 430px !important;
+  font-size: 15px !important;
+  line-height: 1.5 !important;
+}
+.contact-shell .contact-rule {
+  width: 100% !important;
+  margin-bottom: 24px !important;
+  background: rgba(5,5,5,.24) !important;
+}
+.contact-shell .contact-bottom-grid {
+  grid-template-columns: minmax(160px, 190px) minmax(300px, 1fr) !important;
+  gap: clamp(28px, 3vw, 42px) !important;
+  align-items: start !important;
+}
+.contact-shell .contact-details p {
+  font-size: 13px !important;
+  line-height: 1.42 !important;
+}
+.contact-shell .contact-form {
+  width: 100% !important;
+  max-width: 380px !important;
+}
+.contact-shell .contact-form label {
+  margin-bottom: 22px !important;
+}
+.contact-shell .contact-form input,
+.contact-shell .contact-form textarea {
+  border-bottom-color: rgba(5,5,5,.62) !important;
+}
+.contact-shell .contact-form textarea {
+  height: 78px !important;
+  resize: vertical !important;
+}
+.contact-shell .contact-form button {
+  width: 100% !important;
+  height: 48px !important;
+  margin-top: -4px !important;
+  justify-content: space-between !important;
+  padding: 0 18px !important;
+  gap: 24px !important;
+}
+.contact-shell .contact-image {
+  left: auto !important;
+  right: clamp(42px, 5vw, 72px) !important;
+  top: clamp(132px, 13vh, 154px) !important;
+  width: min(43vw, 560px) !important;
+  height: min(58vh, 560px) !important;
+}
+.contact-shell .contact-image img {
+  object-fit: cover !important;
+}
+.contact-shell .site-footer {
+  min-height: 620px !important;
+}
+.contact-shell .site-footer-line-top { top: 118px !important; }
+.contact-shell .site-footer-line-bottom { bottom: 154px !important; }
+.contact-shell .site-footer-main { inset: 119px 45px 155px !important; }
+.contact-shell .site-footer-brand-block { top: 44px !important; }
+.contact-shell .site-footer-sphere {
+  top: 58px !important;
+  width: 280px !important;
+  height: 252px !important;
+}
+
+@media (max-width: 900px) {
+  .contact-shell .contact-canvas {
+    padding: 18px 20px 30px !important;
+    min-height: auto !important;
+  }
+  .contact-shell .contact-header {
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    padding: 0 !important;
+  }
+  .contact-shell .contact-back {
+    margin-top: 32px !important;
+  }
+  .contact-shell .contact-left {
+    width: 100% !important;
+    margin-top: 30px !important;
+  }
+  .contact-shell .contact-title-art {
+    width: min(100%, 340px) !important;
+    margin-bottom: 22px !important;
+  }
+  .contact-shell .contact-intro {
+    margin: 18px 0 22px !important;
+    font-size: 14px !important;
+    max-width: 100% !important;
+  }
+  .contact-shell .contact-rule {
+    margin-bottom: 22px !important;
+  }
+  .contact-shell .contact-bottom-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 26px !important;
+  }
+  .contact-shell .contact-form {
+    order: 1 !important;
+    max-width: none !important;
+  }
+  .contact-shell .contact-details {
+    order: 2 !important;
+  }
+  .contact-shell .field-row {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+  }
+  .contact-shell .contact-form label {
+    margin-bottom: 20px !important;
+  }
+  .contact-shell .contact-form textarea {
+    height: 92px !important;
+  }
+  .contact-shell .contact-form button {
+    height: 52px !important;
+    margin-top: 0 !important;
+  }
+  .contact-shell .contact-details h2 {
+    margin-bottom: 16px !important;
+  }
+  .contact-shell .contact-details p {
+    margin-bottom: 14px !important;
+  }
+  .contact-shell .contact-image {
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 4 / 3 !important;
+    margin-top: 28px !important;
+  }
+  .contact-shell .site-footer {
+    min-height: 560px !important;
+  }
+  .contact-shell .site-footer-line-top { top: 54px !important; }
+  .contact-shell .site-footer-line-bottom { bottom: 142px !important; }
+  .contact-shell .site-footer-main { inset: 55px 22px 143px !important; }
+  .contact-shell .site-footer-brand-block { top: 30px !important; }
+  .contact-shell .site-footer-tagline {
+    margin-top: 22px !important;
+    line-height: 1.45 !important;
+  }
+  .contact-shell .site-footer-sphere {
+    width: 178px !important;
+    height: 168px !important;
+    right: -18px !important;
+    top: 114px !important;
+    opacity: .58 !important;
+  }
+  .contact-shell .site-footer-star {
+    bottom: 30px !important;
+  }
+  .contact-shell .site-footer-plus {
+    bottom: 28px !important;
+  }
+  .contact-shell .site-footer-bottom {
+    bottom: 32px !important;
+    gap: 20px !important;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1180px) {
+  .contact-shell .contact-left {
+    width: 52vw !important;
+  }
+  .contact-shell .contact-title-art {
+    width: min(440px, 48vw) !important;
+  }
+  .contact-shell .contact-bottom-grid {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+  }
+  .contact-shell .contact-form {
+    max-width: 430px !important;
+  }
+  .contact-shell .contact-image {
+    width: 36vw !important;
+    height: 460px !important;
+  }
+}
