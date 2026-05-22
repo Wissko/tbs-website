@@ -5926,3 +5926,46 @@ html, body { overflow-x: hidden; }
     display: none !important;
   }
 }
+
+/* Contact desktop exact reference title crop. */
+.contact-v2-title-art {
+  position: relative;
+  width: 470px;
+  height: 210px;
+  margin: 0;
+  overflow: hidden;
+  background: transparent;
+}
+.contact-v2-title-art img {
+  object-fit: cover;
+  object-position: center;
+}
+@media (min-width: 701px) {
+  .contact-v2-copy {
+    left: 72px !important;
+    top: 192px !important;
+  }
+  .contact-v2-copy h1 {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    clip: rect(0,0,0,0) !important;
+    clip-path: inset(50%) !important;
+    white-space: nowrap !important;
+  }
+  .contact-v2-copy p {
+    left: -27px !important;
+    top: 260px !important;
+  }
+  .contact-v2-subnav {
+    grid-template-columns: 255px 1fr 178px !important;
+  }
+  .contact-v2-subnav > div {
+    transform: translateX(-84px);
+    gap: 41px !important;
+  }
+}
+@media (max-width: 700px) {
+  .contact-v2-title-art { display: none !important; }
+}

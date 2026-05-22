@@ -56,6 +56,9 @@ export default function ContactPage() {
 
         <section className="contact-v2-hero" aria-labelledby="contact-title">
           <div className="contact-v2-copy">
+            <figure className="contact-v2-title-art" aria-hidden="true">
+              <Image src="/images/uploads/contact-ref-title.png" alt="" fill priority sizes="470px" />
+            </figure>
             <h1 id="contact-title">LET’S BUILD<br />SOMETHING ICONIC<br />TOGETHER</h1>
             <p>Have a project in mind or just want to say hello?<br />We’d love to hear from you.</p>
           </div>
