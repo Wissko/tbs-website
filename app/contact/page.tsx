@@ -1,11 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, BarChart3, Clock, HelpCircle, Mail, MapPin, Phone, Zap } from "lucide-react";
+import { ArrowRight, BarChart3, Clock, HelpCircle, Mail, Phone, Zap } from "lucide-react";
 
 const contactCards = [
   { icon: Mail, label: "EMAIL", value: "Agency.tobeseen@gmail.com" },
   { icon: Phone, label: "CALL", value: "Book a free strategy call" },
-  { icon: MapPin, label: "LOCATION", value: "No fixed address\nRemote / on-site by project" },
   { icon: Clock, label: "AVAILABILITY", value: "24/7\nAlways available online" },
 ];
 
