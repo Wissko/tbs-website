@@ -43,8 +43,15 @@ export default function ResultsPage() {
             </nav>
           </div>
           <div className="results-reference-seal" aria-hidden="true">
-            <span>Premium systems · measurable outcomes ·</span>
-            <b>+</b>
+            <svg viewBox="0 0 120 120" role="img">
+              <defs>
+                <path id="results-seal-circle" d="M60,60 m-43,0 a43,43 0 1,1 86,0 a43,43 0 1,1 -86,0" />
+              </defs>
+              <text>
+                <textPath href="#results-seal-circle">PREMIUM SYSTEMS · MEASURABLE OUTCOMES · </textPath>
+              </text>
+            </svg>
+            <span>+</span>
           </div>
         </section>
 
