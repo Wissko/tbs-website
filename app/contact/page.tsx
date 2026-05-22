@@ -3,10 +3,10 @@ import Link from "next/link";
 import { ArrowRight, BarChart3, Clock, HelpCircle, Mail, MapPin, Phone, Zap } from "lucide-react";
 
 const contactCards = [
-  { icon: Mail, label: "EMAIL", value: "hello@tbs.studio" },
-  { icon: Phone, label: "PHONE", value: "+33 1 64 25 45 12" },
-  { icon: MapPin, label: "ADDRESS", value: "32 Rue de Turenne\n75003 Paris, France" },
-  { icon: Clock, label: "HOURS", value: "Monday - Friday\n9:00 AM - 6:00 PM" },
+  { icon: Mail, label: "EMAIL", value: "Agency.tobeseen@gmail.com" },
+  { icon: Phone, label: "CALL", value: "Book a free strategy call" },
+  { icon: MapPin, label: "LOCATION", value: "No fixed address\nRemote / on-site by project" },
+  { icon: Clock, label: "AVAILABILITY", value: "24/7\nAlways available online" },
 ];
 
 const helpCards = [
