@@ -8,7 +8,7 @@ import Seal from "../components/Seal";
 import { bookingHref, brand } from "../lib/brand";
 import { resultItems } from "../lib/results";
 import { coreServices } from "../lib/services";
-import { caseStudies } from "../lib/work";
+import { projectTypes } from "../lib/work";
 
 export default function Home() {
   return (
@@ -89,24 +89,24 @@ export default function Home() {
       <section className="section container" aria-labelledby="work-title">
         <div className="section-head">
           <div>
-            <p className="eyebrow">Selected work</p>
+            <p className="eyebrow">Projects</p>
             <h2 id="work-title" className="display h2">
-              Built for<br />real businesses.
+              Built for<br />businesses like yours.
             </h2>
           </div>
-          <p>A salon, an independent creative, a holiday cottage. Different trades, the same goal: be found, be trusted, be chosen.</p>
+          <p>A salon, a creative, a holiday cottage: three kinds of business we have built for, and what each one gets.</p>
         </div>
         <ul className="cases">
-          {caseStudies.map((item, index) => (
+          {projectTypes.map((item, index) => (
             <Reveal as="li" key={item.slug} delay={index * 90}>
               <Link href={`/work/${item.slug}`} className="case-card">
                 <figure className="case-media">
                   <Image src={item.image} alt={item.alt} fill sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" />
                 </figure>
                 <p className="case-meta">
-                  <span>{item.sector}</span>
+                  <span>{item.kind}</span>
                 </p>
-                <h3 className="display">{item.client}</h3>
+                <h3 className="display">{item.title}</h3>
                 <p>{item.summary}</p>
               </Link>
             </Reveal>
@@ -114,7 +114,7 @@ export default function Home() {
         </ul>
         <div className="section-foot">
           <Link className="arrow-link" href="/work">
-            All work <span aria-hidden="true">→</span>
+            All projects <span aria-hidden="true">→</span>
           </Link>
         </div>
       </section>

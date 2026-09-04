@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { brand } from "../lib/brand";
 import { resultItems } from "../lib/results";
 import { services } from "../lib/services";
-import { caseStudies } from "../lib/work";
+import { projectTypes } from "../lib/work";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = brand.siteUrl;
@@ -17,7 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const dynamic = [
     ...services.map((service) => `/services/${service.slug}`),
-    ...caseStudies.map((item) => `/work/${item.slug}`),
+    ...projectTypes.map((item) => `/work/${item.slug}`),
     ...resultItems.map((item) => `/results/${item.slug}`),
   ].map((path) => ({ url: `${base}${path}`, lastModified, changeFrequency: "monthly" as const, priority: 0.6 }));
 

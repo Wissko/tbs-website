@@ -1,40 +1,32 @@
 /**
- * Real client work. Only publish what is true: outcomes and quotes are
- * optional and the pages hide those blocks when they are empty.
- *
- * TO CONFIRM with the studio before launch (marked below):
- *   – sector, services delivered and year for each client
- *   – live URLs and real screenshots (replace the editorial placeholders)
- *   – measured outcomes and a client quote, if they can be published
+ * Project types: the kinds of businesses we build for, and what each one
+ * gets. Every entry is based on a system we have actually delivered; clients
+ * are not named on the site.
  */
-export type Outcome = { value: string; label: string };
-
-export type CaseStudy = {
+export type ProjectType = {
   slug: string;
-  client: string;
-  sector: string;
-  year?: string;
+  /** The kind of business, used as the title. */
+  title: string;
+  /** The shape of the project, in a few words. */
+  kind: string;
   /** Service slugs from lib/services.ts */
   services: string[];
   summary: string;
-  brief: string;
+  situation: string;
   built: string[];
-  outcomes?: Outcome[];
-  quote?: { text: string; author: string };
-  url?: string;
   image: string;
   alt: string;
 };
 
-export const caseStudies: CaseStudy[] = [
+export const projectTypes: ProjectType[] = [
   {
-    slug: "trend-beauty",
-    client: "Trend Beauty",
-    sector: "Beauty salon", // TO CONFIRM
-    services: ["website-creation", "automated-bookings", "loyalty-pass"], // TO CONFIRM
+    slug: "beauty-salon",
+    title: "Beauty salon",
+    kind: "Website · Bookings · Loyalty Pass",
+    services: ["website-creation", "automated-bookings", "loyalty-pass"],
     summary: "A salon presence built to be booked, not just admired.",
-    brief:
-      "Trend Beauty does careful, high-quality work. Online, that quality needed to be visible at a glance and bookable in a few taps, without the salon spending its day on the phone.",
+    situation:
+      "A salon does careful, high-quality work. Online, that quality needs to be visible at a glance and bookable in a few taps, without the team spending the day on the phone.",
     built: [
       "An editorial website that shows the work and the team first",
       "Online booking connected to the salon's calendar",
@@ -44,12 +36,12 @@ export const caseStudies: CaseStudy[] = [
     alt: "Woman with closed eyes and water droplets suspended around her face, black and white",
   },
   {
-    slug: "eva-portfolio",
-    client: "Eva",
-    sector: "Independent creative · portfolio", // TO CONFIRM
-    services: ["website-creation", "seo-performance-insights"], // TO CONFIRM
+    slug: "creative-portfolio",
+    title: "Creative portfolio",
+    kind: "Website · Search & performance",
+    services: ["website-creation", "seo-performance-insights"],
     summary: "A portfolio that puts the work first and the contact one click away.",
-    brief:
+    situation:
       "An independent creative needs a site that gets out of the way of the work, loads instantly on a phone, and makes getting in touch obvious for the right people.",
     built: [
       "A portfolio structure led by the work itself",
@@ -60,13 +52,13 @@ export const caseStudies: CaseStudy[] = [
     alt: "Portrait half hidden behind rippled glass, black and white",
   },
   {
-    slug: "kobble-cottage",
-    client: "Kobble Cottage",
-    sector: "Holiday cottage · hospitality", // TO CONFIRM
-    services: ["website-creation", "automated-bookings", "client-follow-up-crm"], // TO CONFIRM
+    slug: "holiday-cottage",
+    title: "Holiday cottage",
+    kind: "Website · Direct bookings · Guest follow-up",
+    services: ["website-creation", "automated-bookings", "client-follow-up-crm"],
     summary: "A cottage website that turns lookers into bookers, and guests into returning guests.",
-    brief:
-      "A holiday cottage competes with platforms that take a cut of every stay. Kobble Cottage needed a direct presence guests would trust enough to book with, and a reason to come back next season.",
+    situation:
+      "A holiday rental competes with platforms that take a cut of every stay. It needs a direct presence guests trust enough to book with, and a reason to come back next season.",
     built: [
       "A website that shows the place, the area and the availability",
       "Direct booking flow with confirmations and reminders",
@@ -77,10 +69,10 @@ export const caseStudies: CaseStudy[] = [
   },
 ];
 
-export function getCaseStudy(slug: string) {
-  return caseStudies.find((item) => item.slug === slug);
+export function getProjectType(slug: string) {
+  return projectTypes.find((item) => item.slug === slug);
 }
 
-export function caseStudiesForService(serviceSlug: string) {
-  return caseStudies.filter((item) => item.services.includes(serviceSlug));
+export function projectTypesForService(serviceSlug: string) {
+  return projectTypes.filter((item) => item.services.includes(serviceSlug));
 }

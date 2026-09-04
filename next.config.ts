@@ -15,6 +15,10 @@ const nextConfig: NextConfig = {
       { source: "/article", destination: "/work", permanent: true },
       { source: "/careers", destination: "/about", permanent: true },
       { source: "/terms", destination: "/legal", permanent: true },
+      // Projects are described by business type, not client name.
+      { source: "/work/trend-beauty", destination: "/work/beauty-salon", permanent: true },
+      { source: "/work/eva-portfolio", destination: "/work/creative-portfolio", permanent: true },
+      { source: "/work/kobble-cottage", destination: "/work/holiday-cottage", permanent: true },
       // Product renamed.
       { source: "/services/wallet-loyalty", destination: "/services/loyalty-pass", permanent: true },
     ];

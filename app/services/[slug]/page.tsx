@@ -6,7 +6,7 @@ import CtaBand from "../../../components/CtaBand";
 import PageShell from "../../../components/PageShell";
 import { bookingHref, brand } from "../../../lib/brand";
 import { getService, process, services } from "../../../lib/services";
-import { caseStudiesForService } from "../../../lib/work";
+import { projectTypesForService } from "../../../lib/work";
 
 type Params = Promise<{ slug: string }>;
 
@@ -30,7 +30,7 @@ export default async function ServicePage({ params }: { params: Params }) {
   const service = getService(slug);
   if (!service) notFound();
 
-  const related = caseStudiesForService(service.slug);
+  const related = projectTypesForService(service.slug);
   const index = services.findIndex((item) => item.slug === service.slug);
   const next = services[(index + 1) % services.length];
 
@@ -107,9 +107,9 @@ export default async function ServicePage({ params }: { params: Params }) {
         <section className="section container" aria-labelledby="related-title">
           <div className="section-head">
             <div>
-              <p className="eyebrow">In the wild</p>
+              <p className="eyebrow">For example</p>
               <h2 id="related-title" className="display h2">
-                Where we built it.
+                A typical project.
               </h2>
             </div>
           </div>
@@ -121,9 +121,9 @@ export default async function ServicePage({ params }: { params: Params }) {
                     <Image src={item.image} alt={item.alt} fill sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" />
                   </figure>
                   <p className="case-meta">
-                    <span>{item.sector}</span>
+                    <span>{item.kind}</span>
                   </p>
-                  <h3 className="display">{item.client}</h3>
+                  <h3 className="display">{item.title}</h3>
                   <p>{item.summary}</p>
                 </Link>
               </li>
