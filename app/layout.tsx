@@ -1,7 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { Archivo, Instrument_Sans } from "next/font/google";
 import "./globals.css";
-import { brand } from "../lib/brand";
+import MenuOverlay from "../components/MenuOverlay";
+import ScrollFx from "../components/ScrollFx";
+import { bookingHref, brand } from "../lib/brand";
+import { primaryNav } from "../lib/nav";
+import { services } from "../lib/services";
 
 const display = Archivo({
   subsets: ["latin"],
@@ -53,6 +57,16 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           </filter>
         </svg>
         {children}
+        {/* Always reachable: the menu button is fixed, outside the page transition wrapper. */}
+        <MenuOverlay
+          links={primaryNav}
+          services={services.map((service) => ({ label: service.title, href: `/services/${service.slug}` }))}
+          email={brand.contact.email}
+          bookingHref={bookingHref}
+          ctaLabel={brand.cta.primary}
+          line={brand.manifesto.line}
+        />
+        <ScrollFx />
       </body>
     </html>
   );

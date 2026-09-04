@@ -8,7 +8,7 @@ const productionUrl =
   process.env.NEXT_PUBLIC_SITE_URL ??
   (process.env.VERCEL_PROJECT_PRODUCTION_URL
     ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-    : "http://localhost:3000");
+    : "https://tobeseen.agency");
 
 export const brand = {
   /** Short mark used in headers and the footer. */
@@ -21,7 +21,7 @@ export const brand = {
   description:
     "To Be Seen builds the digital systems that make independent businesses easier to find, easier to trust and easier to choose: websites, Loyalty Pass, online bookings and client follow-up.",
   /** Who we build for. Named on the home page and in the services. */
-  audiences: ["salons", "restaurants", "cottages & guesthouses", "independent professionals"],
+  audiences: ["salons", "restaurants", "cottages", "independents"],
   manifesto: {
     line: "Excellence deserves an audience.",
     body: [

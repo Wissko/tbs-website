@@ -3,6 +3,7 @@ import Link from "next/link";
 import CtaBand from "../components/CtaBand";
 import Marks from "../components/Marks";
 import PageShell from "../components/PageShell";
+import ProjectShots from "../components/ProjectShots";
 import Reveal from "../components/Reveal";
 import Seal from "../components/Seal";
 import { bookingHref, brand } from "../lib/brand";
@@ -46,7 +47,7 @@ export default function Home() {
           />
         </figure>
 
-        <Seal id="hero-seal" className="hero-seal" text="Scroll & explore · TBS° · " />
+        <Seal id="hero-seal" className="hero-seal" text="Scroll & explore · TBS° · " href="#systems" />
 
         <div className="hero-foot">
           <span>{brand.short} · {brand.claim}</span>
@@ -54,7 +55,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section container" aria-labelledby="systems-title">
+      <section className="section container" id="systems" aria-labelledby="systems-title">
         <div className="section-head">
           <div>
             <p className="eyebrow">What we build</p>
@@ -100,9 +101,13 @@ export default function Home() {
           {projectTypes.map((item, index) => (
             <Reveal as="li" key={item.slug} delay={index * 90}>
               <Link href={`/work/${item.slug}`} className="case-card">
-                <figure className="case-media">
-                  <Image src={item.image} alt={item.alt} fill sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" />
-                </figure>
+                {item.shots ? (
+                  <ProjectShots shots={item.shots} alt={`${item.title} website, desktop and mobile`} />
+                ) : (
+                  <figure className="case-media">
+                    <Image src={item.image} alt={item.alt} fill sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" />
+                  </figure>
+                )}
                 <p className="case-meta">
                   <span>{item.kind}</span>
                 </p>

@@ -4,6 +4,7 @@ import Link from "next/link";
 import CtaBand from "../../components/CtaBand";
 import Marks from "../../components/Marks";
 import PageShell from "../../components/PageShell";
+import ProjectShots from "../../components/ProjectShots";
 import Reveal from "../../components/Reveal";
 import { projectTypes } from "../../lib/work";
 
@@ -32,9 +33,13 @@ export default function ProjectsPage() {
           {projectTypes.map((item, index) => (
             <Reveal as="li" key={item.slug} delay={index * 90}>
               <Link href={`/work/${item.slug}`} className="case-card">
-                <figure className="case-media">
-                  <Image src={item.image} alt={item.alt} fill sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" />
-                </figure>
+                {item.shots ? (
+                  <ProjectShots shots={item.shots} alt={`${item.title} website, desktop and mobile`} />
+                ) : (
+                  <figure className="case-media">
+                    <Image src={item.image} alt={item.alt} fill sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" />
+                  </figure>
+                )}
                 <p className="case-meta">
                   <span>{item.kind}</span>
                 </p>

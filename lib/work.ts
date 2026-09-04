@@ -3,6 +3,8 @@
  * gets. Every entry is based on a system we have actually delivered; clients
  * are not named on the site.
  */
+import type { Shots } from "../components/ProjectShots";
+
 export type ProjectType = {
   slug: string;
   /** The kind of business, used as the title. */
@@ -14,8 +16,11 @@ export type ProjectType = {
   summary: string;
   situation: string;
   built: string[];
+  /** Editorial fallback when no screenshots exist yet. */
   image: string;
   alt: string;
+  /** Screenshots of the delivered site (see scripts in README to re-capture). */
+  shots?: Shots;
 };
 
 export const projectTypes: ProjectType[] = [
@@ -50,6 +55,11 @@ export const projectTypes: ProjectType[] = [
     ],
     image: "/images/uploads/tbs-photo-06.jpg",
     alt: "Portrait half hidden behind rippled glass, black and white",
+    shots: {
+      url: "https://eva-portfolio-seven.vercel.app/",
+      desktop: "/images/projects/creative-portfolio-desktop.jpg",
+      mobile: "/images/projects/creative-portfolio-mobile.jpg",
+    },
   },
   {
     slug: "holiday-cottage",
@@ -66,6 +76,11 @@ export const projectTypes: ProjectType[] = [
     ],
     image: "/images/uploads/tbs-photo-03.jpg",
     alt: "Concrete building with a lone figure on the roof under dramatic light",
+    shots: {
+      url: "https://kobble-cottage.vercel.app/",
+      desktop: "/images/projects/holiday-cottage-desktop.jpg",
+      mobile: "/images/projects/holiday-cottage-mobile.jpg",
+    },
   },
 ];
 

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import CtaBand from "../../../components/CtaBand";
 import PageShell from "../../../components/PageShell";
+import ProjectShots from "../../../components/ProjectShots";
 import { bookingHref, brand } from "../../../lib/brand";
 import { getService, process, services } from "../../../lib/services";
 import { projectTypesForService } from "../../../lib/work";
@@ -52,9 +53,13 @@ export default async function ServicePage({ params }: { params: Params }) {
             {brand.cta.primary} <span aria-hidden="true">→</span>
           </a>
         </div>
-        <figure className="detail-media">
-          <Image src={service.image} alt={service.alt} fill priority sizes="(max-width: 820px) 100vw, 45vw" />
-        </figure>
+        {service.shots ? (
+          <ProjectShots shots={service.shots} alt={`${service.title}, desktop and mobile`} wide priority />
+        ) : (
+          <figure className="detail-media">
+            <Image src={service.image} alt={service.alt} fill priority sizes="(max-width: 820px) 100vw, 45vw" />
+          </figure>
+        )}
       </section>
 
       <section className="container" aria-label="Service details">
@@ -117,9 +122,13 @@ export default async function ServicePage({ params }: { params: Params }) {
             {related.map((item) => (
               <li key={item.slug}>
                 <Link href={`/work/${item.slug}`} className="case-card">
-                  <figure className="case-media">
-                    <Image src={item.image} alt={item.alt} fill sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" />
-                  </figure>
+                  {item.shots ? (
+                    <ProjectShots shots={item.shots} alt={`${item.title} website, desktop and mobile`} />
+                  ) : (
+                    <figure className="case-media">
+                      <Image src={item.image} alt={item.alt} fill sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" />
+                    </figure>
+                  )}
                   <p className="case-meta">
                     <span>{item.kind}</span>
                   </p>

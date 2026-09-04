@@ -1,3 +1,5 @@
+import type { Shots } from "../components/ProjectShots";
+
 export type TbsService = {
   n: string;
   slug: string;
@@ -12,6 +14,8 @@ export type TbsService = {
   alt: string;
   /** True for the systems shown on the home page. */
   core?: boolean;
+  /** Screenshots of the product itself, shown instead of the editorial photo on the service page. */
+  shots?: Shots;
 };
 
 /** The way every engagement runs. Shared by all service pages. */
@@ -64,6 +68,11 @@ export const services: TbsService[] = [
     image: "/images/uploads/tbs-photo-04.jpg",
     alt: "Curved concrete facade catching a single band of light",
     core: true,
+    shots: {
+      url: "https://loyalty-pass-onboarding.vercel.app/",
+      desktop: "/images/projects/loyalty-pass-desktop.jpg",
+      mobile: "/images/projects/loyalty-pass-mobile.jpg",
+    },
   },
   {
     n: "03",

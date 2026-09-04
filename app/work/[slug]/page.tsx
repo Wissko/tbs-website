@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import CtaBand from "../../../components/CtaBand";
 import PageShell from "../../../components/PageShell";
+import ProjectShots from "../../../components/ProjectShots";
 import { brand } from "../../../lib/brand";
 import { getService } from "../../../lib/services";
 import { getProjectType, projectTypes } from "../../../lib/work";
@@ -47,9 +48,13 @@ export default async function ProjectTypePage({ params }: { params: Params }) {
           <h1 id="project-title" className="display h1 ink-title">{item.title}</h1>
           <p className="lede">{item.summary}</p>
         </div>
-        <figure className="detail-media">
-          <Image src={item.image} alt={item.alt} fill priority sizes="(max-width: 820px) 100vw, 45vw" />
-        </figure>
+        {item.shots ? (
+          <ProjectShots shots={item.shots} alt={`${item.title} website, desktop and mobile`} wide priority />
+        ) : (
+          <figure className="detail-media">
+            <Image src={item.image} alt={item.alt} fill priority sizes="(max-width: 820px) 100vw, 45vw" />
+          </figure>
+        )}
       </section>
 
       <section className="container" aria-label="Project facts">

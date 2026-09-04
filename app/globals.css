@@ -350,10 +350,16 @@ label,
   position: relative;
   z-index: 5;
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
-  align-items: start;
-  gap: var(--s3);
+  grid-template-columns: auto auto minmax(0, 1fr);
+  align-items: center;
+  gap: var(--s2);
   padding: clamp(18px, 2.6vw, 30px) var(--gutter) 0;
+}
+.site-wordmark {
+  font-size: clamp(22px, 2.2vw, 28px);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  padding-top: 2px;
 }
 .orb {
   position: relative;
@@ -382,26 +388,13 @@ label,
   background-image: url("/images/brand/orb-ring-dark.png");
 }
 .orb-ring {
-  animation: spin 16s linear infinite;
   transform-origin: 50% 50%;
-}
-.orb:hover .orb-ring {
-  animation-duration: 6s;
+  transform: rotate(calc(var(--scroll, 0) * 0.25deg));
 }
 @keyframes spin {
   to {
     transform: rotate(1turn);
   }
-}
-.site-tagline {
-  display: grid;
-  padding-top: 4px;
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: var(--t-eyebrow);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  line-height: 1.35;
 }
 .header-plus {
   position: absolute;
@@ -414,21 +407,29 @@ label,
   line-height: 1;
 }
 .menu-button {
-  justify-self: end;
+  position: fixed;
+  z-index: 40;
+  top: calc(var(--sheet-gap) + clamp(14px, 2vw, 26px));
+  right: calc(var(--sheet-gap) + var(--gutter));
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 6px 0;
+  padding: 11px 14px 10px;
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.3s;
+  line-height: 1;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  cursor: var(--cursor-eye-ink);
+  transition: background 0.3s var(--ease), color 0.3s var(--ease);
 }
 .menu-button:hover {
-  border-color: var(--fg);
+  background: var(--ink);
+  color: var(--paper);
 }
 .menu-button span {
   font-weight: 300;
@@ -443,8 +444,9 @@ label,
   .header-plus {
     display: none;
   }
-  .site-tagline span:last-child {
-    display: none;
+  .menu-button {
+    right: calc(var(--sheet-gap) + 16px);
+    top: calc(var(--sheet-gap) + 14px);
   }
 }
 
@@ -998,13 +1000,20 @@ label,
 .detail-media img,
 .outcome-media img {
   object-fit: cover;
-  transition: transform 1s var(--ease);
 }
-.system-link:hover .system-media img,
-.case-card:hover .case-media img,
-.service-card:hover .service-media img,
-.outcome-row:hover .outcome-media img {
-  transform: scale(1.04);
+.system-media,
+.case-media,
+.service-media,
+.outcome-media,
+.shots {
+  transition: transform 0.9s var(--ease);
+}
+.system-link:hover .system-media,
+.case-card:hover .case-media,
+.case-card:hover .shots,
+.service-card:hover .service-media,
+.outcome-row:hover .outcome-media {
+  transform: scale(1.02);
 }
 .system-n,
 .case-meta,
@@ -1086,6 +1095,7 @@ label,
 /* ---------- Manifesto band ---------- */
 .manifesto {
   padding: var(--s8) 0;
+  overflow: clip;
 }
 .manifesto-inner {
   display: grid;
@@ -1771,6 +1781,150 @@ a.contact-card:hover .arrow {
   font-size: var(--t-h1);
 }
 
+/* ---------- Project shots (desktop window + phone) ---------- */
+.shots {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--surface);
+}
+.shots--wide {
+  aspect-ratio: 4 / 3;
+}
+.shots-desktop {
+  position: absolute;
+  left: 7%;
+  top: 8%;
+  right: -8%;
+  bottom: -8%;
+  overflow: hidden;
+  background: var(--paper);
+  border: 1px solid var(--fg);
+}
+.shots-mobile {
+  position: absolute;
+  right: 7%;
+  bottom: 6%;
+  width: 32%;
+  aspect-ratio: 9 / 19.5;
+  overflow: hidden;
+  background: var(--paper);
+  border: 1px solid var(--fg);
+  box-shadow: 0 0 0 8px var(--bg);
+}
+.shots--wide .shots-desktop {
+  left: 6%;
+  top: 10%;
+  right: -10%;
+  bottom: -12%;
+}
+.shots--wide .shots-mobile {
+  width: 22%;
+  right: 6%;
+  bottom: -4%;
+}
+.shots img {
+  object-fit: cover;
+  object-position: top left;
+  filter: grayscale(1) contrast(1.05);
+}
+
+/* ---------- Scroll-driven motion ----------
+   ScrollFx sets --scroll on <html> and --pc (-1 … 1) on each .scene, and adds
+   .fx to <html>. Without it (no JS, reduced motion) nothing below applies. */
+.fx .hero-title {
+  transform: translateY(calc(var(--pc, 0) * -56px));
+  will-change: transform;
+}
+.fx .hero-intro,
+.fx .hero-actions {
+  transform: translateY(calc(var(--pc, 0) * -24px));
+}
+.fx .hero-photo {
+  transform: translateY(calc(var(--pc, 0) * 48px));
+}
+.fx .hero-photo img {
+  transform: translate3d(0, calc(var(--pc, 0) * -8%), 0) scale(1.16);
+  will-change: transform;
+}
+.fx .page-hero .h1,
+.fx .detail-hero .h1 {
+  transform: translateY(calc(var(--pc, 0) * -40px));
+}
+.fx .page-hero .lede,
+.fx .detail-hero .lede {
+  transform: translateY(calc(var(--pc, 0) * -16px));
+}
+.fx .page-hero--grid .detail-media,
+.fx .detail-hero .detail-media,
+.fx .detail-hero .shots {
+  transform: translateY(calc(var(--pc, 0) * 44px));
+}
+.fx .section-head .h2 {
+  transform: translateY(calc(var(--pc, 0) * -32px));
+}
+.fx .section-head p:not(.eyebrow) {
+  transform: translateY(calc(var(--pc, 0) * -14px));
+}
+.fx .system-media img,
+.fx .case-media img,
+.fx .service-media img,
+.fx .detail-media img,
+.fx .outcome-media img,
+.fx .two-col .detail-media img {
+  transform: translate3d(0, calc(var(--pc, 0) * -10%), 0) scale(1.2);
+  will-change: transform;
+}
+.fx .shots-desktop img {
+  transform: translate3d(0, calc(var(--pc, 0) * -6%), 0) scale(1.08);
+}
+.fx .shots-mobile img {
+  transform: translate3d(0, calc(var(--pc, 0) * -9%), 0) scale(1.14);
+}
+.fx .systems > li:nth-child(odd),
+.fx .cases > li:nth-child(odd) {
+  transform: translateY(calc(var(--pc, 0) * -28px));
+}
+.fx .systems > li:nth-child(even),
+.fx .cases > li:nth-child(even) {
+  transform: translateY(calc(var(--pc, 0) * 36px));
+}
+.fx .manifesto h2 {
+  transform: translateX(calc(var(--pc, 0) * -8vw));
+  will-change: transform;
+}
+.fx .manifesto-body {
+  transform: translateY(calc(var(--pc, 0) * -48px));
+}
+.fx .outcome-index strong {
+  display: inline-block;
+  transform: translateY(calc(var(--pc, 0) * -28px));
+}
+.fx .outcome-copy {
+  transform: translateY(calc(var(--pc, 0) * -10px));
+}
+.fx .cta-band h2 {
+  transform: translateX(calc(var(--pc, 0) * -3vw));
+}
+.fx .seal {
+  transform: rotate(calc(var(--scroll, 0) * 0.35deg));
+}
+.fx .mark--p1 {
+  transform: translateX(-50%) rotate(calc(var(--scroll, 0) * 0.15deg));
+}
+.fx .mark--p2 {
+  transform: translateY(-50%) rotate(calc(var(--scroll, 0) * -0.15deg));
+}
+@media (max-width: 820px) {
+  .fx .systems > li,
+  .fx .cases > li {
+    transform: none;
+  }
+  .fx .manifesto h2 {
+    transform: translateX(calc(var(--pc, 0) * -4vw));
+  }
+}
+
 /* ---------- Motion ---------- */
 .page-enter {
   animation: pageIn 0.5s var(--ease) both;
@@ -1799,7 +1953,6 @@ a.contact-card:hover .arrow {
   html {
     scroll-behavior: auto;
   }
-  .orb-ring,
   .seal svg,
   .hero-copy > *,
   .hero-photo,
