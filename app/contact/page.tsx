@@ -1,124 +1,100 @@
+import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight, BarChart3, Clock, HelpCircle, Mail, Phone, Zap } from "lucide-react";
+import { ArrowRight, ArrowUpRight, CalendarCheck, Clock, Mail, MessageSquare, Wallet, Zap } from "lucide-react";
+import ContactForm from "../../components/ContactForm";
+import Marks from "../../components/Marks";
+import PageShell from "../../components/PageShell";
+import { bookingHref, brand, mailto } from "../../lib/brand";
 
-const contactCards = [
-  { icon: Mail, label: "EMAIL", value: "Agency.tobeseen@gmail.com" },
-  { icon: Phone, label: "CALL", value: "Book a free strategy call" },
-  { icon: Clock, label: "AVAILABILITY", value: "24/7\nAlways available online" },
+export const metadata: Metadata = {
+  title: "Contact",
+  description: `Tell ${brand.name} about your business. Book a call or send a message; we reply within two working days.`,
+};
+
+const helpItems = [
+  { icon: ArrowUpRight, title: "New project", body: "A website, bookings or the full system, built for how your business really works." },
+  { icon: Zap, title: "Existing system", body: "Something already in place that should work harder: we optimise, connect and automate." },
+  { icon: Wallet, title: "Loyalty Pass", body: "Our wallet loyalty system, ready to add to any business with regulars." },
+  { icon: MessageSquare, title: "Anything else", body: "Partnerships, press, a question. Write to us; a person answers." },
 ];
-
-const helpCards = [
-  { icon: ArrowRight, title: "NEW PROJECT", body: "Let’s build a high-performing\ndigital system tailored to your goals." },
-  { icon: Zap, title: "EXISTING SYSTEM", body: "Optimize, automate and scale\nwhat you already have." },
-  { icon: BarChart3, title: "CONSULTING", body: "Get expert advice to make better\ndecisions, faster." },
-  { icon: HelpCircle, title: "OTHER INQUIRIES", body: "Partnerships, press or anything\nelse — we’re all ears." },
-];
-
-function Header() {
-  return (
-    <header className="contact-v2-header">
-      <Link className="contact-v2-brand" href="/">TBS°</Link>
-      <p>Premium Business Systems<br />Website · Wallet Loyalty<br />Bookings · Follow-Up</p>
-      <span className="contact-v2-plus">+</span>
-      <Link className="contact-v2-menu" href="/menu">[ MENU ] <span>+</span></Link>
-    </header>
-  );
-}
 
 export default function ContactPage() {
   return (
-    <main className="contact-v2-shell">
-      <section className="contact-v2-canvas">
-        <Header />
-
-        <nav className="contact-v2-subnav" aria-label="Contact navigation">
-          <Link href="/">← BACK TO ALL PAGES</Link>
-          <div>
-            <Link href="/results#outcomes">OUTCOMES</Link>
-            <Link href="/results#trust">TRUST</Link>
-            <Link href="/results#speed">SPEED</Link>
-            <Link href="/results#retention">RETENTION</Link>
+    <PageShell tone="paper">
+      <section className="page-hero page-hero--grid" aria-labelledby="contact-title">
+        <div className="page-hero-copy">
+          <p className="eyebrow">Contact</p>
+          <div className="title-wrap">
+            <Marks />
+            <h1 id="contact-title" className="display h1 ink-title">
+              Let's get<br />you seen.
+            </h1>
           </div>
-          <Link href="/work">VIEW SERVICES →</Link>
-        </nav>
+          <p className="lede">
+            Tell us what you do and where it leaks. A short call is enough to say what we would build first, and why.
+          </p>
+        </div>
+        <figure className="detail-media">
+          <Image
+            src="/images/uploads/tbs-photo-04.jpg"
+            alt="Curved concrete facade catching a single band of light"
+            fill
+            priority
+            sizes="(max-width: 820px) 100vw, 40vw"
+          />
+        </figure>
+      </section>
 
-        <div className="contact-v2-mobile-hero" aria-hidden="true">
-          <strong>LET’S BUILD<br />SOMETHING ICONIC<br />TOGETHER</strong>
-          <p>Have a project in mind or just want to say hello?<br />We’d love to hear from you.</p>
+      <section className="contact-grid" aria-label="Contact options and form">
+        <div className="contact-col">
+          <h2>Get in touch</h2>
+          <div className="contact-cards">
+            <a className="contact-card" href={bookingHref}>
+              <span className="icon"><CalendarCheck size={18} strokeWidth={2} aria-hidden="true" /></span>
+              <span>
+                <b>{brand.cta.primary}</b>
+                <small>{brand.contact.bookingUrl ? "Pick a slot that suits you" : "Propose a time by e-mail"}</small>
+              </span>
+              <ArrowRight className="arrow" size={16} aria-hidden="true" />
+            </a>
+            <a className="contact-card" href={mailto("Hello To Be Seen")}>
+              <span className="icon"><Mail size={18} strokeWidth={2} aria-hidden="true" /></span>
+              <span>
+                <b>E-mail</b>
+                <small>{brand.contact.email}</small>
+              </span>
+              <ArrowRight className="arrow" size={16} aria-hidden="true" />
+            </a>
+            <div className="contact-card">
+              <span className="icon"><Clock size={18} strokeWidth={2} aria-hidden="true" /></span>
+              <span>
+                <b>Response time</b>
+                <small>{brand.contact.responseTime}</small>
+              </span>
+            </div>
+          </div>
         </div>
 
-        <span className="contact-v2-mark mark-a">+</span>
-        <span className="contact-v2-mark mark-b">+</span>
-        <span className="contact-v2-mark mark-c">+</span>
-        <span className="contact-v2-mark mark-d">+</span>
+        <div className="contact-col">
+          <h2>Send a message</h2>
+          <ContactForm />
+        </div>
 
-        <section className="contact-v2-hero" aria-labelledby="contact-title">
-          <div className="contact-v2-copy">
-            <figure className="contact-v2-title-art" aria-hidden="true">
-              <Image src="/images/uploads/contact-ref-title.png" alt="" fill priority sizes="470px" />
-            </figure>
-            <h1 id="contact-title">LET’S BUILD<br />SOMETHING ICONIC<br />TOGETHER</h1>
-            <p>Have a project in mind or just want to say hello?<br />We’d love to hear from you.</p>
-          </div>
-          <figure className="contact-v2-image">
-            <Image src="/images/uploads/contact-ref-hero.png" alt="Architectural concrete curve" fill priority sizes="502px" />
-          </figure>
-        </section>
-
-        <section className="contact-v2-grid" aria-label="Contact options and form">
-          <div className="contact-v2-column contact-v2-touch">
-            <h2>GET IN TOUCH</h2>
-            <div className="contact-v2-contact-cards">
-              {contactCards.map(({ icon: Icon, label, value }) => (
-                <a className="contact-v2-contact-card" href="#" key={label}>
-                  <span className="contact-v2-card-icon"><Icon size={17} strokeWidth={2.2} /></span>
-                  <span className="contact-v2-card-copy"><b>{label}</b>{value.split("\n").map((line) => <small key={line}>{line}</small>)}</span>
-                  <ArrowRight className="contact-v2-card-arrow" size={15} />
-                </a>
-              ))}
-            </div>
-          </div>
-
-          <form className="contact-v2-column contact-v2-form">
-            <h2>SEND US A MESSAGE</h2>
-            <div className="contact-v2-fields two">
-              <label>FIRST NAME<input /></label>
-              <label>LAST NAME<input /></label>
-            </div>
-            <label>EMAIL<input /></label>
-            <label>COMPANY<input /></label>
-            <label>MESSAGE<textarea /></label>
-            <button type="button">SEND MESSAGE <ArrowRight size={15} /></button>
-          </form>
-
-          <div className="contact-v2-column contact-v2-help">
-            <h2>WE’RE HERE TO HELP</h2>
-            <div className="contact-v2-help-list">
-              {helpCards.map(({ icon: Icon, title, body }) => (
-                <article className="contact-v2-help-card" key={title}>
-                  <span><Icon size={17} strokeWidth={2.2} /></span>
-                  <div><h3>{title}</h3><p>{body}</p></div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="contact-v2-faq" aria-label="FAQ">
-          <figure>
-            <Image src="/images/uploads/contact-faq-eye.png" alt="" fill sizes="170px" />
-          </figure>
-          <div>
-            <h2>QUICKER ANSWERS</h2>
-            <p>Check our FAQ or learn more about<br />what we can do for your business.</p>
-          </div>
-          <Link href="/about">VISIT FAQ <ArrowRight size={15} /></Link>
-        </section>
-
-        <span className="contact-v2-bottom-plus left">+</span>
-        <span className="contact-v2-bottom-plus right">+</span>
+        <div className="contact-col">
+          <h2>We can help with</h2>
+          <ul>
+            {helpItems.map(({ icon: Icon, title, body }) => (
+              <li className="help-item" key={title}>
+                <span className="icon"><Icon size={18} strokeWidth={2} aria-hidden="true" /></span>
+                <div>
+                  <h3>{title}</h3>
+                  <p>{body}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
       </section>
-    </main>
+    </PageShell>
   );
 }

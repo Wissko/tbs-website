@@ -1,67 +1,56 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import SiteFooter from "../../components/SiteFooter";
-import { services } from "../../lib/services";
+import CtaBand from "../../components/CtaBand";
+import Marks from "../../components/Marks";
+import PageShell from "../../components/PageShell";
+import Reveal from "../../components/Reveal";
+import { getService } from "../../lib/services";
+import { caseStudies } from "../../lib/work";
 
-function Header() {
-  return (
-    <header className="work-header">
-      <Link className="work-brand" href="/">TBS°</Link>
-      <p className="work-kicker">Digital Creative Studio<br />Building Bold Experiences<br />And Brands.</p>
-      <span className="work-plus">+</span>
-      <Link className="work-menu" href="/menu">( MENU ) <span>+</span></Link>
-    </header>
-  );
-}
+export const metadata: Metadata = {
+  title: "Work",
+  description: "Websites, bookings and Loyalty Pass built for real independent businesses: Trend Beauty, Eva, Kobble Cottage.",
+};
 
 export default function WorkPage() {
   return (
-    <main className="work-shell">
-      <section className="work-canvas">
-        <Header />
-
-        <section className="work-content work-services-content" aria-label="TBS services">
-          <h1 className="services-title-a11y">SERVICES</h1>
-          <figure className="services-title-art" aria-hidden="true">
-            <Image
-              src="/images/uploads/services-title-art.png"
-              alt=""
-              width={1536}
-              height={620}
-              priority
-              sizes="(max-width: 900px) 92vw, 760px"
-            />
-          </figure>
-          <nav className="work-filters" aria-label="Service filters">
-            <a className="active" href="#core-offers">CORE OFFERS</a>
-            <a href="#visibility">VISIBILITY</a>
-            <a href="#retention">RETENTION</a>
-            <a href="#scheduling">SCHEDULING</a>
-            <a href="#crm">CRM</a>
-            <a href="#bundle">BUNDLE</a>
-          </nav>
-
-          <div className="work-grid work-services-grid" id="core-offers">
-            {services.map((service) => (
-              <Link className="work-service-card" href={`/services/${service.slug}`} key={service.slug}>
-                <span className="work-service-number">{service.n}</span>
-                <span className="work-service-label">{service.label}</span>
-                <h2>{service.title}</h2>
-                <p>{service.short}</p>
-                <b>VIEW SERVICE <span>→</span></b>
-              </Link>
-            ))}
-          </div>
-
-          <footer className="work-stats work-services-stats">
-            <div><strong>06</strong><span>CORE OFFERS</span></div>
-            <div><strong>01</strong><span>COHERENT SYSTEM</span></div>
-            <div><strong>24</strong><span>HOUR STRUCTURE</span></div>
-            <Link href="/contact">BOOK A CALL <span>→</span></Link>
-          </footer>
-        </section>
+    <PageShell tone="paper">
+      <section className="page-hero" aria-labelledby="work-title">
+        <p className="eyebrow">Work</p>
+        <div className="title-wrap">
+          <Marks />
+          <h1 id="work-title" className="display h1 ink-title">Work</h1>
+        </div>
+        <p className="lede">
+          Real businesses, real systems. A salon, an independent creative, a holiday cottage: each one needed to be found, trusted and chosen, and each one got the system that does exactly that.
+        </p>
       </section>
-      <SiteFooter />
-    </main>
+
+      <section className="container" aria-label="Case studies">
+        <ul className="cases">
+          {caseStudies.map((item, index) => (
+            <Reveal as="li" key={item.slug} delay={index * 90}>
+              <Link href={`/work/${item.slug}`} className="case-card">
+                <figure className="case-media">
+                  <Image src={item.image} alt={item.alt} fill sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" />
+                </figure>
+                <p className="case-meta">
+                  <span>{item.sector}</span>
+                  {item.services.map((slug) => {
+                    const service = getService(slug);
+                    return service ? <span key={slug}>{service.title}</span> : null;
+                  })}
+                </p>
+                <h2 className="display">{item.client}</h2>
+                <p>{item.summary}</p>
+              </Link>
+            </Reveal>
+          ))}
+        </ul>
+      </section>
+
+      <CtaBand title="Your business, next." text="Tell us what you do and where it leaks. We will tell you what we would build first." />
+    </PageShell>
   );
 }
