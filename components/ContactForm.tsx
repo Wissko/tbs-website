@@ -53,7 +53,7 @@ export default function ContactForm() {
       <label className="field field--check">
         <input type="checkbox" name="consent" required defaultChecked={values !== undefined} />
         <span>
-          I agree that To Be Seen keeps this message to reply to me. <Link href="/privacy">Privacy policy</Link>.
+          I agree that To Be Seen may keep this message and use it to reply to me. <Link href="/privacy">Privacy policy</Link>.
         </span>
       </label>
 

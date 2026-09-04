@@ -39,7 +39,7 @@ NEXT_PUBLIC_SITE_URL=https://www.yourdomain.com     # used for metadata, sitemap
 
 ## Before launch
 
-- Complete `brand.legal` (legal form, address, registration, publication director).
+- Complete `brand.legal`: registered entity name, legal form, ABN (and ACN for a company), registered office address, and the state whose law governs the terms. The business is registered in Australia; every field is hidden while it is undefined.
 - Set `brand.contact.bookingUrl` to the scheduling link, or leave it to fall back to e-mail.
 - Review the project types in `lib/work.ts` and replace the editorial placeholders with real screenshots when available.
 - Move the contact address to an e-mail on the brand's own domain.

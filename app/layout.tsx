@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     url: brand.siteUrl,
     title: `${brand.name} — ${brand.claim}`,
     description: brand.description,
-    locale: "en_GB",
+    locale: "en_AU",
   },
   twitter: { card: "summary_large_image" },
   robots: { index: true, follow: true },
@@ -63,7 +63,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${display.variable} ${text.variable}`}>
+    <html lang="en-AU" className={`${display.variable} ${text.variable}`}>
       <body>
         <a className="skip-link" href="#main">Skip to content</a>
         {/* Sprayed-ink edge used by `.ink-title`. Defined once, referenced by CSS. */}

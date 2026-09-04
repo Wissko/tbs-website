@@ -31,7 +31,7 @@ export default function StructuredData() {
         name: `${brand.name} Agency`,
         alternateName: [brand.name, "tobeseen agency"],
         publisher: { "@id": `${site}/#organization` },
-        inLanguage: "en",
+        inLanguage: "en-AU",
       },
       {
         "@type": "ProfessionalService",
@@ -40,7 +40,7 @@ export default function StructuredData() {
         url: site,
         email: brand.contact.email,
         image: `${site}/opengraph-image.png`,
-        areaServed: "Worldwide",
+        areaServed: "Australia",
         availableLanguage: ["English", "French"],
         description: brand.description,
         priceRange: "$$$",

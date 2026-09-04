@@ -43,13 +43,25 @@ export const brand = {
     /** Social profiles. Add {label, href} entries when the accounts exist. */
     social: [] as { label: string; href: string }[],
   },
+  /**
+   * The business is registered in Australia, so the legal notice is built
+   * around an ABN and a registered office rather than an EU-style publisher
+   * block. Fill these in before launch: every line below is hidden while it
+   * is undefined, so the page never shows a placeholder.
+   */
   legal: {
+    /** Registered business or company name, exactly as registered. */
     entity: "To Be Seen",
-    /** Complete before launch: legal form, registered address, registration number, publication director. */
+    /** Legal form, e.g. "Pty Ltd" for a company or "sole trader". */
     form: undefined as string | undefined,
+    /** Australian Business Number, 11 digits. */
+    abn: undefined as string | undefined,
+    /** Australian Company Number, 9 digits. Companies only. */
+    acn: undefined as string | undefined,
+    /** Registered office address, including state and postcode. */
     address: undefined as string | undefined,
-    registration: undefined as string | undefined,
-    director: undefined as string | undefined,
+    /** State or territory whose law governs these terms, e.g. "Queensland". */
+    state: undefined as string | undefined,
     host: "Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, United States",
   },
   siteUrl: productionUrl,
