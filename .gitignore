@@ -4,3 +4,6 @@ node_modules
 out
 .vercel
 .DS_Store
+
+# TypeScript incremental cache
+*.tsbuildinfo
