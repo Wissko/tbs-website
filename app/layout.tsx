@@ -3,6 +3,7 @@ import { Archivo, Instrument_Sans } from "next/font/google";
 import "./globals.css";
 import MenuOverlay from "../components/MenuOverlay";
 import ScrollFx from "../components/ScrollFx";
+import StructuredData from "../components/StructuredData";
 import { bookingHref, brand } from "../lib/brand";
 import { primaryNav } from "../lib/nav";
 import { services } from "../lib/services";
@@ -23,14 +24,30 @@ const text = Instrument_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL(brand.siteUrl),
   title: {
-    default: `${brand.short} — ${brand.claim}`,
-    template: `%s · ${brand.short}`,
+    default: `${brand.name} — ${brand.claim}`,
+    template: `%s · ${brand.name}`,
   },
   description: brand.description,
   applicationName: brand.name,
+  keywords: [
+    "to be seen",
+    "to be seen agency",
+    "tobeseen",
+    "tobeseen agency",
+    "TBS",
+    "digital agency",
+    "agence digitale",
+    "loyalty pass",
+    "wallet loyalty",
+    "website creation",
+    "booking automation",
+    "client follow-up",
+  ],
+  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
-    siteName: brand.name,
+    siteName: `${brand.name} Agency`,
+    url: brand.siteUrl,
     title: `${brand.name} — ${brand.claim}`,
     description: brand.description,
     locale: "en_GB",
@@ -67,6 +84,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           line={brand.manifesto.line}
         />
         <ScrollFx />
+        <StructuredData />
       </body>
     </html>
   );
