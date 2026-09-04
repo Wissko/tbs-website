@@ -95,7 +95,7 @@ export default function Home() {
               Built for<br />businesses like yours.
             </h2>
           </div>
-          <p>A salon, a creative, a holiday cottage: three kinds of business we have built for, and what each one gets.</p>
+          <p>A beauty retailer, a creative, a holiday cottage: three kinds of business we have built for, and what each one gets.</p>
         </div>
         <ul className="cases">
           {projectTypes.map((item, index) => (

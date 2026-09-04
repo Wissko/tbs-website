@@ -11,7 +11,7 @@ import { projectTypes } from "../../lib/work";
 export const metadata: Metadata = {
   title: "Projects",
   description:
-    "The kinds of businesses we build for and what each one gets: a beauty salon, a creative portfolio, a holiday cottage. Website, bookings, Loyalty Pass, follow-up.",
+    "The kinds of businesses we build for and what each one gets: beauty retail, a creative portfolio, a holiday cottage. Websites, Loyalty Pass, bookings and follow-up.",
 };
 
 export default function ProjectsPage() {

@@ -16,7 +16,8 @@ const nextConfig: NextConfig = {
       { source: "/careers", destination: "/about", permanent: true },
       { source: "/terms", destination: "/legal", permanent: true },
       // Projects are described by business type, not client name.
-      { source: "/work/trend-beauty", destination: "/work/beauty-salon", permanent: true },
+      { source: "/work/trend-beauty", destination: "/work/beauty-retail", permanent: true },
+      { source: "/work/beauty-salon", destination: "/work/beauty-retail", permanent: true },
       { source: "/work/eva-portfolio", destination: "/work/creative-portfolio", permanent: true },
       { source: "/work/kobble-cottage", destination: "/work/holiday-cottage", permanent: true },
       // Product renamed.

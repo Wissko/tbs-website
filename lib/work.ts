@@ -25,20 +25,27 @@ export type ProjectType = {
 
 export const projectTypes: ProjectType[] = [
   {
-    slug: "beauty-salon",
-    title: "Beauty salon",
-    kind: "Website · Bookings · Loyalty Pass",
-    services: ["website-creation", "automated-bookings", "loyalty-pass"],
-    summary: "A salon presence built to be booked, not just admired.",
+    slug: "beauty-retail",
+    title: "Beauty retail",
+    // TO CONFIRM: which systems we actually delivered here beyond the storefront.
+    kind: "Online store · Brand presence · Search",
+    services: ["website-creation", "seo-performance-insights"],
+    summary: "A hair-care store built to be browsed, trusted and reordered.",
     situation:
-      "A salon does careful, high-quality work. Online, that quality needs to be visible at a glance and bookable in a few taps, without the team spending the day on the phone.",
+      "A beauty retailer competes with marketplaces on every product. It needs a storefront that carries the brand, makes a wide catalogue easy to navigate, and turns a first order into a habit.",
     built: [
-      "An editorial website that shows the work and the team first",
-      "Online booking connected to the salon's calendar",
-      "A Loyalty Pass in Apple and Google Wallet for regular clients",
+      "A storefront that leads with the brand, not the product grid",
+      "Catalogue navigation by range, brand and bestsellers",
+      "First-order incentive and newsletter capture",
+      "Search and performance foundations, with local currency and shipping",
     ],
     image: "/images/uploads/tbs-photo-08.jpg",
     alt: "Woman with closed eyes and water droplets suspended around her face, black and white",
+    shots: {
+      url: "https://trendsbeauty.com.au/",
+      desktop: "/images/projects/beauty-retail-desktop.jpg",
+      mobile: "/images/projects/beauty-retail-mobile.jpg",
+    },
   },
   {
     slug: "creative-portfolio",
@@ -56,7 +63,7 @@ export const projectTypes: ProjectType[] = [
     image: "/images/uploads/tbs-photo-06.jpg",
     alt: "Portrait half hidden behind rippled glass, black and white",
     shots: {
-      url: "https://eva-portfolio-seven.vercel.app/",
+      url: "https://eva-meszoly-v2.vercel.app/",
       desktop: "/images/projects/creative-portfolio-desktop.jpg",
       mobile: "/images/projects/creative-portfolio-mobile.jpg",
     },
