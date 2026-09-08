@@ -1840,10 +1840,10 @@ a.contact-card:hover .arrow {
 .fx .hero-actions {
   transform: translateY(calc(var(--pc, 0) * -24px));
 }
-.fx .hero-photo {
+.fx .hero-photo:not(.hero-photo--scrub) {
   transform: translateY(calc(var(--pc, 0) * 48px));
 }
-.fx .hero-photo img {
+.fx .hero-photo:not(.hero-photo--scrub) img {
   transform: translate3d(0, calc(var(--pc, 0) * -8%), 0) scale(1.16);
   will-change: transform;
 }
@@ -1978,4 +1978,42 @@ a.contact-card:hover .arrow {
   .reveal-in {
     transition: none;
   }
+}
+
+/* Short native-scroll runway: no wheel/touch capture or video download. */
+.portrait-track {
+  width: 100%;
+  max-width: 520px;
+  justify-self: end;
+  padding-bottom: 0;
+}
+.portrait-track[data-motion]::after {
+  content: "";
+  display: block;
+  height: clamp(180px, 38svh, 380px);
+}
+.hero-photo--scrub {
+  position: sticky;
+  top: 96px;
+  animation: none;
+}
+.portrait-relief {
+  position: absolute;
+  inset: 0;
+  transform-origin: 65% 85%;
+  pointer-events: none;
+  will-change: transform;
+}
+.portrait-filter-definitions { position: absolute; pointer-events: none; }
+.portrait-track[data-motion] .portrait-original { opacity: 0; }
+@media (max-width: 820px) {
+  .portrait-track { max-width: none; justify-self: stretch; }
+  .portrait-track[data-motion]::after { height: clamp(160px, 32svh, 280px); }
+  .hero-photo--scrub { top: 84px; max-height: 62svh; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .portrait-track[data-motion]::after { display: none; }
+  .hero-photo--scrub { position: relative; top: auto; }
+  .portrait-relief { display: none; }
+  .portrait-track[data-motion] .portrait-original { opacity: 1; }
 }

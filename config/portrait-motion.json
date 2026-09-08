@@ -1,0 +1,16 @@
+{
+  "background": "#efefed",
+  "whitePoint": 0.94,
+  "desktop": {
+    "translateX": -5,
+    "translateY": -10,
+    "rotate": -0.8,
+    "scale": 1.035
+  },
+  "mobile": {
+    "translateX": -3,
+    "translateY": -6,
+    "rotate": -0.45,
+    "scale": 1.025
+  }
+}

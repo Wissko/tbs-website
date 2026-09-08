@@ -6,6 +6,7 @@ import PageShell from "../components/PageShell";
 import ProjectShots from "../components/ProjectShots";
 import Reveal from "../components/Reveal";
 import Seal from "../components/Seal";
+import ScrollPortrait from "../components/ScrollPortrait";
 import { bookingHref, brand } from "../lib/brand";
 import { resultItems } from "../lib/results";
 import { coreServices } from "../lib/services";
@@ -37,15 +38,7 @@ export default function Home() {
           </div>
         </div>
 
-        <figure className="hero-photo">
-          <Image
-            src="/images/uploads/tbs-photo-01.jpg"
-            alt="Silhouette of a person against a pale background, black and white"
-            fill
-            priority
-            sizes="(max-width: 820px) 100vw, 40vw"
-          />
-        </figure>
+        <ScrollPortrait />
 
         <Seal id="hero-seal" className="hero-seal" text="Scroll & explore · TBS° · " href="#systems" />
 
