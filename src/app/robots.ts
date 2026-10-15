@@ -1,0 +1,1 @@
+import type {MetadataRoute} from 'next';import {baseUrl,indexed} from '@/lib/data';export default function robots():MetadataRoute.Robots{return indexed?{rules:{userAgent:'*',allow:'/'},sitemap:`${baseUrl}/sitemap.xml`}:{rules:{userAgent:'*',disallow:'/'}}}

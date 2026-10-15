@@ -1,0 +1,105 @@
+/* Tokens. The system follows the reference's grid, scale and timing; TBS sky takes the accent role. */
+
+@font-face {
+  font-family: 'Public Sans';
+  src: url('/fonts/public-sans-latin.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --c-light: #f4f4f4;
+  --c-gallery: #eaeaea;
+  --c-dark: #252422;
+  --c-deep: #191918;
+  --c-grey: #5e5e5e;
+  --c-quiet: #8c8b87;
+  --c-white: #ffffff;
+  /* TBS sky: text on dark chapters, carousel cursor, menu. */
+  --c-accent: #bedffd;
+
+  --bg: var(--c-light);
+  --fg: var(--c-dark);
+
+  --font: 'Public Sans', 'Helvetica Neue', Arial, sans-serif;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
+
+  /* 1rem = 10px, scaled with the viewport past 1920. Phones read at 16 px, labels at 12 px at least. */
+  --fs-h1: 4rem;
+  --fs-h2: 2.6rem;
+  --fs-h3: 2.3rem;
+  --fs-h4: 2.1rem;
+  --fs-h5: 1.9rem;
+  --fs-h6: 1.7rem;
+  --fs-small: 1.2rem;
+  --fs-body: 1.6rem;
+  --fs-large: 2rem;
+
+  --pad: 5.4vw;
+  --gutter: 1.6rem;
+  --cols: 6;
+  /* One column: the content width (cqw falls back to the viewport outside main/footer) split in --cols. */
+  --col: calc((100cqw - var(--pad) * 2 + var(--gutter)) / var(--cols));
+  /* One column of twelve at any width: the layouts that open from 1024 px are drawn on twelve columns. */
+  --col12: calc((100cqw - var(--pad) * 2 + var(--gutter)) / 12);
+
+  --section: 12.5vw;
+  --meta-gap: 6rem;
+  --header-h: calc(2.8rem + (1.5rem + 2.5vw) * 2);
+
+  --ease-out: cubic-bezier(.28, .44, .49, 1);
+  --ease-out-soft: cubic-bezier(.28, 0, .49, 1);
+  --ease-in-out-soft: cubic-bezier(.72, 0, .28, 1);
+  --ease-in-out-hard: cubic-bezier(.77, 0, .175, 1);
+  --ease-garret: cubic-bezier(.5, 0, 0, 1);
+
+  /* Delay before the page's opening animations: longer on a fresh load, after the logo takeover. */
+  --intro: 1.15s;
+}
+
+@media (min-width: 480px) {
+  :root { --fs-h1: 4.6rem; }
+}
+/* Tablets and small laptops: larger reading sizes than phones, headlines that grow with the screen. */
+@media (min-width: 720px) {
+  :root {
+    --fs-h1: 6.25vw;
+    --fs-h2: 3.2rem;
+    --fs-h3: 2.8rem;
+    --fs-h4: 2.4rem;
+    --fs-h5: 2rem;
+    --fs-h6: 1.8rem;
+    --fs-small: 1.3rem;
+    --fs-body: 1.7rem;
+    --fs-large: 2.1rem;
+  }
+}
+@media (min-width: 1280px) {
+  :root {
+    --fs-h2: 4.2rem;
+    --fs-h3: 3.8rem;
+    --fs-h4: 2.8rem;
+    --fs-h5: 2.2rem;
+    --fs-h6: 2.2rem;
+    --fs-small: 1.4rem;
+    --fs-body: 1.8rem;
+    --fs-large: 2.2rem;
+    --pad: 8rem;
+    --gutter: 2rem;
+    --cols: 12;
+    --meta-gap: 8.5rem;
+    --header-h: 12.8rem;
+  }
+}
+
+html[data-initial='false'] { --intro: .3s; }
+
+/* Colour themes. A page opts into dark with data-page-theme; a chapter can borrow it while in view. */
+body:has(main [data-page-theme='dark']),
+body[data-theme='dark'] {
+  --bg: var(--c-dark);
+  --fg: var(--c-accent);
+}

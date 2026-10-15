@@ -1,13 +1,8 @@
-.next
-node_modules
+node_modules/
+.next/
+.next-dev/
 .env*
-out
-.vercel
-.DS_Store
-
-# TypeScript incremental cache
+!.env.example
+.vercel/
 *.tsbuildinfo
-
-# Vercel
-.vercel
-.env*.local
+scripts/hero-fabric/*.png

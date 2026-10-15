@@ -1,0 +1,253 @@
+/* Base: reset, type scale, the shared pieces (pill, dot, meta bar, grain) and opening animations. */
+
+*, *::before, *::after { box-sizing: border-box; }
+html {
+  font-size: 62.5%;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+@media (min-width: 1920px) { html { font-size: .5vw; } }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: var(--font);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-medium);
+  letter-spacing: -.01em;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+  transition: background-color .65s var(--ease-in-out-soft), color .65s var(--ease-in-out-soft);
+}
+main, .site-footer { container-type: inline-size; }
+main { display: block; min-height: calc(100vh - 15.625vw); }
+
+h1, h2, h3, h4, h5, h6, p, ul, ol, figure, blockquote, q, dl, dd { margin: 0; }
+h1, h2, h3, h4, h5, h6 { font-size: inherit; font-weight: inherit; }
+ul, ol { padding: 0; list-style: none; }
+a { color: inherit; text-decoration: none; }
+img, video, svg { display: block; max-width: 100%; }
+img { height: auto; }
+button, input, textarea, select { font: inherit; color: inherit; letter-spacing: inherit; }
+button { padding: 0; border: 0; background: none; cursor: pointer; }
+q { quotes: none; }
+q::before, q::after { content: none; }
+:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+::selection { background: var(--c-accent); color: var(--c-dark); }
+[hidden] { display: none !important; }
+
+.skip-link {
+  position: fixed; z-index: 1200; top: -100px; left: 16px;
+  padding: 12px 18px;
+  background: var(--c-dark); color: var(--c-light);
+  font-size: 1.4rem; font-weight: var(--fw-bold); text-transform: uppercase;
+}
+.skip-link:focus { top: 14px; }
+.visually-hidden {
+  position: absolute !important; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+}
+
+/* Grid */
+.wrap { padding-right: var(--pad); padding-left: var(--pad); }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+  column-gap: var(--gutter);
+}
+
+/* Type scale */
+.t-h1 { font-size: var(--fs-h1); font-weight: var(--fw-bold); letter-spacing: -.05em; line-height: .9; text-transform: uppercase; }
+.t-h2 { font-size: var(--fs-h2); font-weight: var(--fw-bold); letter-spacing: -.05em; line-height: 1.1; text-transform: uppercase; }
+.t-h3 { font-size: var(--fs-h3); font-weight: var(--fw-medium); letter-spacing: -.035em; line-height: 1.1; }
+.t-h4 { font-size: var(--fs-h4); font-weight: var(--fw-bold); letter-spacing: -.02em; line-height: 1.2; }
+.t-h5 { font-size: var(--fs-h5); font-weight: var(--fw-bold); letter-spacing: -.02em; line-height: 1.1; text-transform: uppercase; }
+.t-h6 { font-size: var(--fs-h6); font-weight: var(--fw-medium); letter-spacing: -.02em; line-height: 1.1; }
+.t-small { font-size: var(--fs-small); letter-spacing: -.02em; line-height: 1.14; text-transform: uppercase; }
+.t-body { font-size: var(--fs-body); line-height: 1.4; }
+.t-large { font-size: var(--fs-large); letter-spacing: -.015em; line-height: 1.45; }
+.t-statement { font-size: 2.2rem; letter-spacing: -.035em; line-height: 1.1; }
+@media (min-width: 1280px) { .t-statement { font-size: 3.2rem; } }
+.t-regular { font-weight: var(--fw-regular); }
+.t-bold { font-weight: var(--fw-bold); }
+.upper { text-transform: uppercase; }
+
+/* Inline links inside running text */
+.text-link { text-decoration: underline; text-decoration-thickness: .1rem; text-underline-offset: .15em; }
+.text-link:hover, .text-link:focus-visible { text-decoration: none; }
+
+/* The dot that punctuates headlines and labels. */
+.dot {
+  display: inline-block;
+  width: .72em; height: .72em;
+  margin-right: .3em;
+  border-radius: 50%;
+  background: currentColor;
+  vertical-align: -.02em;
+}
+.dot-col { display: inline-block; }
+@media (min-width: 1280px) {
+  .dot-col { width: var(--col); }
+  .dot-col .dot { margin-right: 0; }
+}
+
+/* Pill button: a fill rises from below on hover. */
+.pill {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  overflow: hidden;
+  align-items: center;
+  padding: .2rem 3rem 0;
+  border: .1rem solid;
+  border-radius: 1.6rem;
+  color: inherit;
+  font-size: max(1.2rem, 12px);
+  font-weight: var(--fw-bold);
+  letter-spacing: -.02em;
+  line-height: 2.8rem;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.pill::before {
+  position: absolute; z-index: -1; bottom: -.1rem; left: 0;
+  width: 100%; height: calc(100% + .2rem);
+  background-color: currentColor;
+  content: '';
+  transform: translate3d(0, 101%, 0);
+  transition: transform .25s var(--ease-out);
+}
+/* Only the words turn: the fill keeps the pill's own colour (currentColor), wherever it sits. */
+.pill > span, .pill .arrow { position: relative; transition: color .25s var(--ease-out); }
+.pill:hover > span, .pill:focus-visible > span, .pill:hover .arrow, .pill:focus-visible .arrow { color: var(--bg); }
+.pill:focus-visible { outline: 0; }
+.pill:hover::before, .pill:focus-visible::before { transform: none; }
+.pill:focus-visible { box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--fg); }
+.pill .arrow { width: .9rem; margin-left: .75rem; }
+
+.arrow { flex-shrink: 0; overflow: visible; }
+.arrow path { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: square; }
+
+/* Meta bar: a rule, then the section's coordinates. */
+.meta-bar { position: relative; }
+.meta-bar__line { height: .1rem; background-color: currentColor; transform-origin: left; }
+.meta-bar__row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  margin-bottom: 9rem;
+  font-size: var(--fs-small);
+  letter-spacing: -.02em;
+  line-height: 1.14;
+  text-transform: uppercase;
+}
+.meta-bar__row > :nth-child(2) { font-weight: var(--fw-bold); }
+.meta-bar__row .dot { width: 1.1rem; height: 1.1rem; margin: 0; vertical-align: 0; }
+@media (min-width: 1024px) {
+  .meta-bar__row > :first-child { flex: 0 0 calc(var(--col12) * 2); }
+  .meta-bar__row > :nth-child(2) { flex: 1 1 auto; }
+  .meta-bar--half .meta-bar__row > :first-child { flex-basis: calc(var(--col12) * 3); }
+}
+@media (min-width: 1280px) {
+  .meta-bar__row > :first-child { flex-basis: calc(var(--col) * 4); }
+  .meta-bar--half .meta-bar__row > :first-child { flex-basis: calc(var(--col) * 6); }
+}
+.meta-bar--tight .meta-bar__row { margin-bottom: 0; }
+
+/* Film grain over everything. */
+.grain {
+  position: fixed; z-index: 1100; inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.grain::after {
+  position: absolute; top: -10rem; left: -10rem;
+  width: calc(100% + 20rem); height: calc(100% + 20rem);
+  background-image: url('/brand/grain.png');
+  background-size: 25.6rem;
+  content: '';
+  animation: grain 1s steps(2) infinite;
+  will-change: transform;
+}
+@keyframes grain {
+  0% { transform: translate3d(0, 9rem, 0); }
+  10% { transform: translate3d(-1rem, -4rem, 0); }
+  20% { transform: translate3d(-8rem, 2rem, 0); }
+  30% { transform: translate3d(9rem, -9rem, 0); }
+  40% { transform: translate3d(-2rem, 7rem, 0); }
+  50% { transform: translate3d(-9rem, -4rem, 0); }
+  60% { transform: translate3d(2rem, 6rem, 0); }
+  70% { transform: translate3d(7rem, -8rem, 0); }
+  80% { transform: translate3d(-9rem, 1rem, 0); }
+  90% { transform: translate3d(6rem, -5rem, 0); }
+  100% { transform: translate3d(-7rem, 0, 0); }
+}
+
+/* Opening animations: words rise out of their line, blocks fade in, a rule draws itself. */
+.words__part { display: block; }
+.words .w {
+  display: inline-block;
+  overflow: hidden;
+  padding-right: .15em;
+  margin-right: -.15em;
+  margin-top: -.12em;
+  padding-top: .12em;
+  vertical-align: top;
+}
+.words .w > span {
+  display: inline-block;
+  transform: translateY(105%);
+  animation: rise .75s var(--ease-garret) calc(var(--intro) + var(--i, 0) * 45ms) forwards;
+}
+.fade-in {
+  opacity: 0;
+  animation: fade .65s var(--ease-out) calc(var(--intro) + var(--d, 0ms)) forwards;
+}
+.draw {
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: draw .65s var(--ease-in-out-soft) calc(var(--intro) + var(--d, 0ms)) forwards;
+}
+@keyframes rise { to { transform: none; } }
+@keyframes fade { to { opacity: 1; } }
+@keyframes draw { to { transform: none; } }
+
+/* Scroll reveals (runtime.tsx adds .is-in once). Without script everything is simply visible.
+   up: the block rises and fades in; line: a rule draws from the left; words: a headline's words rise;
+   wipe: a media frame slides up from its own bottom edge while the picture settles. */
+.js [data-reveal='up'] { opacity: 0; transform: translate3d(0, 3rem, 0); transition: opacity .9s var(--ease-out-soft) var(--d, 0ms), transform .9s var(--ease-out-soft) var(--d, 0ms); }
+.js [data-reveal='up'].is-in { opacity: 1; transform: none; }
+.js [data-reveal='line'] { transform: scaleX(0); transform-origin: left; transition: transform 1s var(--ease-in-out-soft) var(--d, 0ms); }
+.js [data-reveal='line'].is-in { transform: none; }
+[data-reveal='words'] { --intro: 0s; }
+.js [data-reveal='words'] .w > span { animation-play-state: paused; }
+.js [data-reveal='words'].is-in .w > span { animation-play-state: running; }
+/* The observed frame stays put (so it triggers on time); its window slides up while the picture holds still. */
+.js [data-reveal='wipe'] { overflow: hidden; }
+.js [data-reveal='wipe'] > .wipe { overflow: hidden; transform: translate3d(0, 100%, 0); transition: transform 1s var(--ease-in-out-soft) var(--d, 0ms); }
+.js [data-reveal='wipe'] > .wipe > * { transform: translate3d(0, -100%, 0) scale(1.2); transition: transform 1s var(--ease-in-out-soft) var(--d, 0ms); }
+.js [data-reveal='wipe'].is-in > .wipe, .js [data-reveal='wipe'].is-in > .wipe > * { transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-delay: 0ms !important; transition-duration: .001ms !important; transition-delay: 0ms !important; }
+  .grain::after { animation: none; }
+  .js [data-reveal], .js [data-reveal='wipe'] > .wipe, .js [data-reveal='wipe'] > .wipe > * { opacity: 1 !important; transform: none !important; }
+  .js [data-reveal='words'] .w > span { animation-play-state: running; }
+}
+
+/* Media frames */
+.frame { position: relative; overflow: hidden; background: color-mix(in srgb, var(--fg) 8%, transparent); }
+.frame > img, .frame > video, .frame > picture > img { width: 100%; height: 100%; object-fit: cover; }
+.cover { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+/* A mask in the current colour: client marks and the TBS mark. */
+.mark {
+  display: block;
+  background-color: currentColor;
+  -webkit-mask: var(--mask) no-repeat 0 50% / contain;
+  mask: var(--mask) no-repeat 0 50% / contain;
+}
