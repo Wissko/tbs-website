@@ -33,7 +33,7 @@ export function platesFor(project: Project): Plate[] {
   if (pair) plates.push(scene('pair-1', pair[0], `${name} in two browser windows`, 'Two windows'));
   plates.push({kind: 'phone', key: 'phone', ratio: .8, media: phone, alt: `${name}, ${captions[project.id]?.phone?.toLowerCase() ?? 'on a phone'}`, caption: caption('phone', 'On the iPhone')});
   if (pair) plates.push(scene('pair-2', pair[1], `${name} on a laptop`, 'On the Mac'));
-  plates.push(closing ? scene('closing', closing, `${name} on three phones`, 'Three screens on iPhone') : scene('tile', tile, `${name}, ${caption('tile', 'On the iPhone').toLowerCase()}, tilted`, 'On the iPhone', .8));
+  plates.push(closing ? scene('closing', closing, `${name} on three phones`, 'Three screens on iPhone') : scene('tile', tile, tile.alt ?? name, caption('tile', 'In place'), .8));
   return plates;
 }
 

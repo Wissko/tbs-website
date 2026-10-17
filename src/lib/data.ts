@@ -14,7 +14,8 @@ export type Mockups = {
   phone: Media & {framed?: boolean};
   /** Three iPhones. */
   closing?: Media;
-  /** The iPhone tilted, 4:5, for tiles and the menu. */
+  /** The project in place, 4:5, for tiles and the menu: its site's real capture on a device in a setting from the
+   *  client's world (scripts/scenes/build.py, public/projects/scenes). The settings are generated; the screens never are. */
   tile: Media;
 };
 
@@ -48,6 +49,17 @@ export type Project = {
   note?: string;
 };
 
+/** What each project's setting shows, for the tiles' alternative text. */
+const places: Record<string, string> = {
+  eva: 'Eva Meszoly’s portfolio on a laptop in a photography studio',
+  kobble: 'The Kobble Cottage website on a phone on a farm cottage verandah, gum trees and hills behind',
+  wissem: 'Wissem OS on a laptop on a desk at night',
+  niumi: 'The Niumi Distributors website on a laptop on cartons in a warehouse',
+  bluepacific: 'The Blue Pacific website on a phone on a shipping container at a port',
+  loyalty: 'The Loyalty Pass merchant app on a phone on a café counter',
+  howard: 'The Howard Partners CRM on a laptop on an executive desk',
+};
+
 const scene = (id: string, name: string, alt?: string): Media => ({src: `/projects/mockups/${id}-${name}.jpg`, width: 2400, height: 1500, alt});
 const mockups = (id: string, {layered = false, wide = false, pair = false, closing = false} = {}): Mockups => ({
   opening: scene(id, 'opening'),
@@ -56,7 +68,7 @@ const mockups = (id: string, {layered = false, wide = false, pair = false, closi
   pair: pair ? [scene(id, 'pair-1'), scene(id, 'pair-2')] : undefined,
   phone: {src: `/projects/mockups/${id}-phone.png`, width: 840, height: 1560},
   closing: closing ? scene(id, 'closing') : undefined,
-  tile: {src: `/projects/mockups/${id}-tile.jpg`, width: 1200, height: 1500},
+  tile: {src: `/projects/scenes/${id}.jpg`, width: 1600, height: 2000, alt: places[id]},
 });
 
 export const projects: Project[] = [

@@ -22,9 +22,9 @@ export function Natural({media, alt, sizes, priority = false}: {media: Media; al
   return <Image src={media.src} alt={media.alt ?? alt} width={media.width} height={media.height} sizes={sizes} priority={priority} quality={82} />;
 }
 
-/** The project's tile: its iPhone, tilted, on the project's colour. */
+/** The project's tile: its site in place, on a device in a setting from the client's world. */
 export function ProjectTile({project, sizes, priority = false}: {project: Project; sizes: string; priority?: boolean}) {
-  return <Fill media={project.mockup.tile} alt={`${project.name}, ${project.type.toLowerCase()}, on a phone`} sizes={sizes} priority={priority} />;
+  return <Fill media={project.mockup.tile} alt={`${project.name}, ${project.type.toLowerCase()}`} sizes={sizes} priority={priority} />;
 }
 
 /**

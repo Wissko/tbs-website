@@ -13,7 +13,8 @@
 //   pair-1/2      two browser windows; the Mac face on (Loyalty Pass: the pass beside the phone)
 //   closing       three iPhones
 //   phone         the iPhone upright, transparent, for the case chapter
-//   tile          the iPhone tilted, 4:5: tiles and menu
+// The tiles and the menu show each project in place instead (scripts/scenes/build.py); the tilted iPhone is still drawn
+// for the retouching set.
 //   identity      the logo the studio designed, on paper, beside its colours (sampled from the logo file)
 const fs = require('fs');
 const path = require('path');
@@ -295,7 +296,6 @@ function html({w, h, canvas, dark, body}, grain) {
       await render(scenes.opening(p, s, {only: 'phone'}), out('layer.png'), {alpha: true});
     }
     await render(scenes.upright(p, s), out('phone.png'), {alpha: true});
-    await render(scenes.tilted(p, s), out('tile.jpg'), {scale: 1});
     if (p.perspective) await render(scenes.perspective(p, s), out('wide.jpg'));
     if (p.windows) await render(scenes.windows(p, s), out('pair-1.jpg'));
     if (p.face || p.pass) await render(p.face ? scenes.face(p, s) : scenes.pass(p, s), out('pair-2.jpg'));
